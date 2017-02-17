@@ -159,6 +159,12 @@ class kmeans:
 
 
 if __name__ == '__main__':
+    '''
+        Main program.
+            Construct K-Means algorithm with training data.
+
+    '''    
+    
     print ('This program execute\n')
     data_set = get_data ('clusters.txt')
     kms = kmeans(data_set, 3, 1e-9)
