@@ -3,7 +3,7 @@
 '''
 Machine Learning Algorithm Name: Neural Network
 
-This is a sample program to demonstrate the implementation of Neural Network implementation.
+This is a sample program to demonstrate the implementation of Multilayer Neural Network.
 
 @author: Cheng-Lin Li a.k.a. Clark
 
@@ -308,7 +308,7 @@ if __name__ == '__main__':
             Read the labeled data from down gesture training list as training data.
             Construct Neural Network with training data.
             Read the test data from downgesture_test.list
-            Varify the prediction.
+            Calculate the accuracy of predictions.
     '''        
 
     images = []

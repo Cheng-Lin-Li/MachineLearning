@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//DecisionTree/DecisionTree.py=utf-8
 encoding//FastMap/FastMap.py=utf-8
 encoding//GMM/GMM.py=utf-8
+encoding//HMM/HMM-Viterbi.py=utf-8
 encoding//K-Means/K-Means.py=utf-8
 encoding//NeuralNetwork/NeuralNetwork.py=utf-8
 encoding//PCA/PCA.py=utf-8

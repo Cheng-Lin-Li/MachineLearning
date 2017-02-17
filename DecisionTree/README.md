@@ -1,2 +1,2 @@
-This is an example of Decision Tree
+This is an example implementation of Decision Tree Algorithm
 
