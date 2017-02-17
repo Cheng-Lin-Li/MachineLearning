@@ -31,7 +31,7 @@ import math
 from scipy.cluster.hierarchy import centroid
 
 K = 3  # number of cluster
-CONVERGENCE = 1e-9 # The recursive termination threshold of total of square of ||xi - uk||.
+CONVERGENCE = 1e-9 # The recursive termination threshold of total of square of ||xi - uk||
 
 def get_data (fn):
     X = np.genfromtxt(fn, delimiter=',')
