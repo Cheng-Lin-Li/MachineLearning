@@ -1,6 +1,7 @@
 This is an example implementation of Decision Tree Algorithm
 
 Task:
+
 In this exercise is to predict whether you will have a good night-out in Jerusalem for the coming New Year's Eve. 
 Assume that you have kept a record of your previous night-outs with the following attributes. 
 
@@ -45,6 +46,7 @@ attribute on the 1st level
 1st attribute on the 2nd level, 2nd attribute on the 2nd level, 3rd attribute on the 2nd level ...
 
 For example, if the program uses 'size' as the root, occupied, prices and music as the attributes on the second level corresponding to size={Large, Medium, Small} respectively, 
+
 then it should look like the following:
 
 
@@ -68,6 +70,7 @@ Data Structure
 
 
 Main Methods
+
 	def __init__  //Initialize decision tree
 
 	def setBranchSet  //Create branch data set for an node
