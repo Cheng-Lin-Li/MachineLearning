@@ -47,6 +47,7 @@ attribute on the 1st level
 For example, if the program uses 'size' as the root, occupied, prices and music as the attributes on the second level corresponding to size={Large, Medium, Small} respectively, 
 then it should look like the following:
 
+
 size 
 occupied, prices, music
  … More levels and attributes … 
@@ -95,6 +96,7 @@ Main Methods
 
 
 Process
+
 	1. Create the data structure for training dataset and decision tree
 
 	2. Initialize the decision tree
