@@ -7,7 +7,7 @@ This is a sample program to demonstrate the implementation of decision tree by E
 
 @author: Cheng-Lin Li a.k.a. Clark
 
-@copyright:  2017 Cheng-Lin Li@University of Southern California. All rights reserved.
+@copyright:    2017 Cheng-Lin Li@University of Southern California. All rights reserved.
 
 @license:    Licensed under the GNU v3.0. https://www.gnu.org/licenses/gpl.html
 
@@ -15,7 +15,7 @@ This is a sample program to demonstrate the implementation of decision tree by E
 @version:    1.0
 
 @create:    September, 11, 2016
-@updated: February, 2, 2017
+@updated:    February, 2, 2017
 
 '''
 
@@ -412,7 +412,6 @@ class DecisionTree (object):
                         for each_data in each_dict:
                             #print branch
                             print(each_data + ',', end='') 
-                            pass
                     print()  
                   
                 for each_dict in _pl:                                  
