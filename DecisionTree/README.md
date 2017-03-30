@@ -1,6 +1,6 @@
-This is an example implementation of Decision Tree Algorithm
+## This is an example implementation of Decision Tree Algorithm
 
-Task:
+## Task:
 
 This exercise is to predict whether you will have a good night-out in Jerusalem for the coming New Year's Eve. 
 Assume that you have kept a record of your previous night-outs with the following attributes. 
@@ -56,7 +56,7 @@ occupied, prices, music
  (The final level)Yes, No, Yes, Yes, …
 
 
-Data Structure
+## Data Structure
 
 	TRAINING_SET = [{'attr_name':'attribute1', 'data':['type1, type1, type2...']}, {}, ..., {}]  //Store the training data. e.g. { 'attr_name': 'Occupied', 'data': ['High', 'High', 'Moderate',..., 'Low']}
 
@@ -69,7 +69,7 @@ Data Structure
 	branch_total_count = {'branch_name1':total_count_of_record,..., 'branch_nameN': total_count_of_record}  //Store the number of cases in each branch of the node
 
 
-Main Methods
+## Main Methods
 
 	def __init__  //Initialize decision tree
 
@@ -98,7 +98,7 @@ Main Methods
 	def printNextLevelDecisionTree  //Visit each node in same level with tree end condition
 
 
-Process
+## Process
 
 	1. Create the data structure for training dataset and decision tree
 
