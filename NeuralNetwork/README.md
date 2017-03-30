@@ -1,9 +1,9 @@
-#This is an example implementation of Neural Network Algorithm
+## This is an example implementation of Neural Network Algorithm
 
-##Machine Learning Algorithm: Neural Network Algorithm.
+## Machine Learning Algorithm: Neural Network Algorithm.
 
-##Implementation features:
+## Implementation features:
 The neural network support multiple layers with multiple dimensions input and one dimension output.
 
-##Task:
+## Task:
 
