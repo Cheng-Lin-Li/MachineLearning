@@ -1,5 +1,4 @@
 
-
 # Machine Learning
 Implementations of machine learning algorithm by Python 3
 
@@ -11,4 +10,5 @@ Your comments are welcome.
 Thanks,
 
 Cheng-Lin Li@University of Southern California
+chenglil@usc.edu or 
 clark.cl.li@gmail.com
