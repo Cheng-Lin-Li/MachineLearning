@@ -2,7 +2,7 @@ This is an example implementation of Decision Tree Algorithm
 
 Task:
 
-In this exercise is to predict whether you will have a good night-out in Jerusalem for the coming New Year's Eve. 
+This exercise is to predict whether you will have a good night-out in Jerusalem for the coming New Year's Eve. 
 Assume that you have kept a record of your previous night-outs with the following attributes. 
 
 	• The size of the place {Large, Medium, Small}
