@@ -118,10 +118,10 @@ A while-loop trains the neural network with all training data sets and initial w
 According to Stochastic Learning approach, randomly pick up a data set from all training data sets.
 
 
-Compute X_j^((l) )=θ(∑_(i=0)^(d(l-1))▒〖w_ij^((l)) X_i^((l-1)) 〗) in the forward direction data set chosen in a. θ is an activation function, which can be both logistic sigmoid and hyperbolic tangent functions as what we set.	
+Compute $$X_j^((l) )=θ(∑_(i=0)^(d(l-1))▒〖w_ij^((l)) X_i^((l-1)) 〗)$$ in the forward direction data set chosen in a. θ is an activation function, which can be both logistic sigmoid and hyperbolic tangent functions as what we set.	
 
 
-Compute δ_j^((l-1))=(1-(X_i^((l-1)) )^2 ) ∑_(j=1)^(d(l))▒W_ij^((l))  δ_j^((l)) in the backward direction with corresponding result in step b.
+Compute $$δ_j^((l-1))=(1-(X_i^((l-1)) )^2 ) ∑_(j=1)^(d(l))▒W_ij^((l))  δ_j^((l))$$ in the backward direction with corresponding result in step b.
 
 
 Update weight vectors w_ij^((l)) by w_ij^((l))= w_ij^((l))- 〖η*X〗_i^((l-1) )*δ_j^((l)) . η is learning rate.
