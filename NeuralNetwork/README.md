@@ -14,17 +14,123 @@ The label of an image is 1 if the word "down" is in its file name; otherwise the
 
 The image file format is "pgm" <http://netpbm.sourceforge.net/doc/pgm.html>. You may follow the link for the format details. 
 
+
+##Objectives
+Implement the Back Propagation algorithm for Feed Forward Neural Networks to learn down gestures from training images available in downgesture_train.list. After the training, use the trained network to predict the labels for the gestures in the test images available in downgesture_test.list.
+
+The result should print out whether the prediction is correct for “down” gesture, the prediction result and the accuracy of prediction.
+
+There are 184 training data sets in downgesture_train.list and 83 testing data sets in downgesture_test.list. The training data sets and testing data sets are PGM image, which is a special to present grayscale graphic image.
+
+
 ## Data Structure
+Training data and testing data are stored in array like [[data1], [data2], ... , [dataN]]. For [data1] = [value_dimension_1, value_dimension_2, ..., value_dimension_d].
 
 
+Labels of each data set are stored in list.
+
+
+Weights store in an array like [[Weights of level-01], [Weights of level-12], ..., [Weights of level-(L-1)(L)]]. For [Weights of Level-01]=[[w01, w02, ..., w0d], [w11, w12, ..., w1d], ... [wd1, wd2, ..., wdd]]
+
+
+The layer sizes are store in an array, in which each item corresponds to different layer.
+
+
+Weight vector store in an array/vector.
 
 
 ## Main Methods
+A Neural Network class supports on both logistic sigmoid and hyperbolic tangent functions as activation functions, resolver is stochastic gradient descent to implement and provide a lot of value sets for reference.
 
 
+1. This implementation apply Stochastic learning approach where single example is randomly chosen from training set at each iteration.
 
 
+2. The initial data range of weight matrix/array can be configured from parameters.
+
+
+3. The output is one dimension.
+        
+
+
+self.hidden_layer_sizes = [hidden_layer1_sizes, hidden_layer2_sizes, ... , hidden_layerL-1_sizes]     
+
+
+self.weights = weights array = [[Weights of level-01], [Weights of level-12], ..., [Weights of level-(L-1)(L)]]. 
+
+
+     For [Weights of Level-01]=[[w01, w02, ..., w0d], [w11, w12, ..., w1d], ... [wd1, wd2, ..., wdd]]
+
+
+self.max_iteration = integer, max. iterations;
+
+
+self.learning_rate = float.
+
+
+self.training_data = input array = [[data1], [data2], ... , [dataN]]. For [data1] = [value_dimension_1, value_dimension_2, ..., value_dimension_d]
+
+
+self.input_numbers= integer, default is 0. Numbers of data set,
+
+
+self.input_dimensions =integer, default is 0. Dimensions of data set, 
+
+
+self.training_data_label = np.array(training_data_label)
+
+
+self.output_numbers= integer, default is 0. Out put label numbers.
+
+
+self.output_dimensions integer, default is 0. The dimensions will match with label data set automatically. 
+
+
+self.network_layer_sizes = [input layer sizes+1, hidden layer1 sizes, ... , hidden layerL-1 sizes, output layer sizes ] 
+
+
+    input layer sizes = input data dimensions., output layer sizes = label data dimensions.
+
+
+self.tol = float. Tolerance of output and label data. If the tolerance between output & label data less than tol parameter by consecutive times, program will stop. 
 
 
 ## Process
+Get input training data sets from files.
+
+
+Assign label to each data set according to its file name. If ‘down’ exists in file name, the label is 1, otherwise 0.
+
+
+Class constructor initialize the hidden layers array, network layers array, activation function and other parameters according to user’s input.
+
+
+Execute algorithm by execute() function.
+
+
+Initialize weights vector randomly with each value between given range.
+
+
+A while-loop trains the neural network with all training data sets and initial weight vector.
+
+
+According to Stochastic Learning approach, randomly pick up a data set from all training data sets.
+
+
+Compute X_j^((l) )=θ(∑_(i=0)^(d(l-1))▒〖w_ij^((l)) X_i^((l-1)) 〗) in the forward direction data set chosen in a. θ is an activation function, which can be both logistic sigmoid and hyperbolic tangent functions as what we set.	
+
+
+Compute δ_j^((l-1))=(1-(X_i^((l-1)) )^2 ) ∑_(j=1)^(d(l))▒W_ij^((l))  δ_j^((l)) in the backward direction with corresponding result in step b.
+
+
+Update weight vectors w_ij^((l)) by w_ij^((l))= w_ij^((l))- 〖η*X〗_i^((l-1) )*δ_j^((l)) . η is learning rate.
+
+
+The program terminates when the maximum iteration was reached. The default iteration here is 1000.
+
+
+Get input testing data sets from files.
+
+
+Predict the label of each data set with trained neural network. If the prediction finds out the “down” gesture correctly, print “Match(O)”, otherwise “Match(X)”. Calculate and output the accuracy finally.
 
