@@ -86,6 +86,7 @@ self.output_numbers= integer, default is 0. Out put label numbers.
 self.output_dimensions integer, default is 0. The dimensions will match with label data set automatically. 
 
 
+
 self.network_layer_sizes = [input layer sizes+1, hidden layer1 sizes, ... , hidden layerL-1 sizes, output layer sizes ] 
 
 
