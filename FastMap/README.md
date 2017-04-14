@@ -10,7 +10,7 @@ A FastMap class is implemented and provide a lot of value sets for reference.
         self.k = An integer, the target dimension
         self.obj_k_d = An array, the result: Object distances scale to k dimension.
         self._col = An integer, current processing dimension
-        self._max_dist = An float, keep current max. distance of Oa, Ob in current dimension to speed up the performance.
+        self._max_dist = A float, keep current max. distance of Oa, Ob in current dimension to speed up the performance.
         self._new_dist_set = An array, the new destination information of current processing dimension between each object
         self._max_Oa = An index information of Oa for max. distance for current dimension.
         self._max_Ob = An index information of Ob for max. distance for current dimension.
