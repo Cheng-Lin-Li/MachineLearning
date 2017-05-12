@@ -69,7 +69,7 @@ class FastMap():
 
     [Optimized]
     Except first dimension the program select the pivot objects from existing distance information base on reference paper.
-    For rest of iterations, we get the maximum distance and pivot objects directly from self.max_dist, self.Oa, self.Ob that were computed during the "projection_on_hyper_plane()" step. 
+    For rest of iterations, the program gets the maximum distance and pivot objects directly from self.max_dist, self.Oa, self.Ob that were computed during the "projection_on_hyper_plane()" step. 
     
     function lists:
     1. set_obj_set(object_pair): Return self.obj_set

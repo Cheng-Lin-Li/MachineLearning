@@ -1,4 +1,4 @@
-## This is an example implementation of Decision Tree Algorithm
+## This is an implementation of Decision Tree Algorithm
 
 ## Task:
 
