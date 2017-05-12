@@ -21,7 +21,7 @@ Assume that you have kept a record of your previous night-outs with the followin
 	
 	• Whether you enjoyed {Yes, No}
 
-####Usage: python DecisionTree.py dt-data.txt	
+#### Usage: python DecisionTree.py dt-data.txt	
 
 Input: A data file (dt-data.txt) that contains the relevant records.
 
