@@ -20,8 +20,10 @@ Assume that you have kept a record of your previous night-outs with the followin
 	• Whether this place has your favorite beer {Yes, No} 
 	
 	• Whether you enjoyed {Yes, No}
-	
-A data file (dt-data.txt) that contains the relevant records.
+
+####Usage: python DecisionTree.py dt-data.txt	
+
+Input: A data file (dt-data.txt) that contains the relevant records.
 
 in case there is a tie between attributes, the program use the order that the attributes are listed as the priority. 
 For example, to break tie between prices and location, since prices are listed closer to the front of the list, use prices instead of location. 
