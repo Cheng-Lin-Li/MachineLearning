@@ -54,12 +54,9 @@ then it should look like the following:
 
 size 
 
-
 occupied, prices, music
 
-
 … More levels and attributes … 
-
 
 (The final level)Yes, No, Yes, Yes, …
 
