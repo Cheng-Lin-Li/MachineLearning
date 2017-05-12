@@ -1,6 +1,6 @@
-## This is an implementation of Decision Tree Algorithm
+## This is an implementation of Decision Tree Algorithm in Python 3
 
-## Task:
+## The task:
 
 This exercise is to predict whether you will have a good night-out in Jerusalem for the coming New Year's Eve. 
 Assume that you have kept a record of your previous night-outs with the following attributes. 
@@ -27,7 +27,9 @@ in case there is a tie between attributes, the program use the order that the at
 For example, to break tie between prices and location, since prices are listed closer to the front of the list, use prices instead of location. 
 
 The implementation writes a program to construct decision trees based on the idea of splitting by Information Gain. 
-Make a prediction for (size = Large; occupied = Moderate; price = Cheap; music = Loud; location = City-Center; VP = No; favorite beer = No).
+Make a prediction for (size = Large; occupied = Moderate; price = Cheap; music = Loud; location = City-Center; VIP = No; favorite beer = No).
+
+
 The prediction request is assigned into global variable in the program as below.
 
 TESTING_SET = [{'attr_name': 'Size', 'data': ['Large']}, {'attr_name': 'Occupied', 'data': ['Moderate']}, {'attr_name': 'Price', 'data': ['Cheap']}, {'attr_name': 'Music', 'data': ['Loud']}, {'attr_name': 'Location', 'data': ['City-Center']}, {'attr_name': 'VIP', 'data': ['No']}, {'attr_name': 'Favorite Beer', 'data': ['No']}]
@@ -51,9 +53,15 @@ then it should look like the following:
 
 
 size 
+
+
 occupied, prices, music
- … More levels and attributes … 
- (The final level)Yes, No, Yes, Yes, …
+
+
+… More levels and attributes … 
+
+
+(The final level)Yes, No, Yes, Yes, …
 
 
 ## Data Structure
