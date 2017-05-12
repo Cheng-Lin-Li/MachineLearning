@@ -27,6 +27,7 @@ __version__ = 1.0
 __date__ = '2016-09-11'
 __updated__ = '2017-02-02'
 
+DEBUG = 0
 DELIMITER = ','
 TRAINING_SET = []
 ATTRIBUTE='attr_name'
@@ -71,23 +72,24 @@ def getInputData(filename):
             for _each_line in _fp:
                 if i == 0: #Attribute Name
                     attribute_name_list = [str(sanitize(each_name)) for each_name in _each_line.split(DELIMITER)]
-                    #print ('attribute_name_list=' + str(attribute_name_list))
+                    if DEBUG > 0:  print ('attribute_name_list=' + str(attribute_name_list))
                     for each_attribute_name in attribute_name_list:
                         training_data.append({ATTRIBUTE:str(each_attribute_name), DATA:[]}) #Put each attribute dictionary into training set
-                        # print ('TRAINING_SET= ' + str(TRAINING_SET))
+                        if DEBUG > 1:  print ('TRAINING_SET= ' + str(TRAINING_SET))
                     i += 1
                 elif i == 1: #Space
                     i += 1
                 else: #Attribute Data
                     _attribute_data_list = [str(sanitize(each_data)) for each_data in _each_line.split(DELIMITER)]
-                    #print ('attribute_data_list' + str(attribute_data_list))
+                    if DEBUG > 1: print ('attribute_data_list' + str(attribute_data_list))
                     for index, each_data in enumerate(_attribute_data_list):
                         training_data[index][DATA].append(str(each_data))
 
             #Debug purpose code:
-            print ('TRAINING_SET= ')
-            for each_attribute in training_data:
-                print (str(each_attribute))
+            if DEBUG > 0:  
+                print ('TRAINING_SET= ')
+                for each_attribute in training_data:
+                    print (str(each_attribute))
         return training_data
     except IOError as _err:
         print ('File error: ' + str (_err))
@@ -180,6 +182,8 @@ class DecisionTree (object):
             #Get Entropy of each branch
                 _class_type_count = branch[each_class_type]
                 _branch_info += _class_type_count/branch_total*math.log2(branch_total/_class_type_count)
+                # The other form of formula
+                #_branch_info -= _class_type_count/branch_total*math.log2(_class_type_count/branch_total)
             return _branch_info
         
     def sumBranchEntropy (self, attribute, classification_attribute):
@@ -208,7 +212,7 @@ class DecisionTree (object):
                     # if the branch type + classification type exist
                         branch_set[each_attr_type][class_attr[DATA][index]] += 1
                         branch_total_count[each_attr_type] += 1
-                        #print ('3.1. branch_set=' + str(branch_set))
+                        if DEBUG > 1: print ('3.1. branch_set=' + str(branch_set))
                     else:
                     # if the branch type exist but classification not exist, create it and set counter to 1
                         branch_set[each_attr_type][class_attr[DATA][index]] = 1
@@ -233,7 +237,7 @@ class DecisionTree (object):
         
     def getNodeEntropy (self, classification_attribute):
         #Calculate Node Entropy
-        #print ('getNodeEntropy: Begin')
+        if DEBUG > 1:  print ('getNodeEntropy: Begin')
         counter_dict={}
         info = 0.0
         n = len(classification_attribute[DATA]) # total number of data in the attribute
@@ -250,12 +254,12 @@ class DecisionTree (object):
             # Calculate Node entropy
                 info += (counter_dict[each_type]/n)*math.log2(n/counter_dict[each_type])
 
-            #print(', Node info =' + str(info))
+            if DEBUG > 1: print(', Node info =' + str(info))
             return info
             
     def getNodeInfoGain (self, attribute, classification_attribute):
         # Information Gain = Node entropy - Sum of weighted branch entropy
-        #print ('Get Information Gain')
+        if DEBUG > 1: print ('Get Information Gain')
         _nodeEntropy = self.getNodeEntropy(classification_attribute)
         _sumBranchEntropy, _branch_set = self.sumBranchEntropy(attribute, classification_attribute)
         return (_nodeEntropy - _sumBranchEntropy), _branch_set
@@ -270,7 +274,7 @@ class DecisionTree (object):
         # {attr_type1:Training_set1[],...,attr_typeN:Training_setN[]}
         # Training_Set= [Attribute1{'attr_name':'att1', 'data':['type1, type1, type2...']}, Attribute2{},...,AttributeN{}]
         # The training will exclude the best information gain attribute 
-        #print ('getSplitTrainingSetByAttr')
+        if DEBUG > 1: print ('getSplitTrainingSetByAttr')
         _r_training_set = training_set
         split_training_dict = {}
         try:
@@ -296,8 +300,8 @@ class DecisionTree (object):
                 split_training_dict[each_type][index2][DATA].append(str(each_attr[DATA][index1]))
                 
                 #Debug purpose code:
-                #print('each_attr[DATA][index1]=' + str(each_attr[DATA][index1]))
-                #print('==>split_training_dict[each_type][index2]=' + str(split_training_dict[each_type][index2]))  
+                if DEBUG > 1: print('each_attr[DATA][index1]=' + str(each_attr[DATA][index1]))
+                if DEBUG > 1: print('==>split_training_dict[each_type][index2]=' + str(split_training_dict[each_type][index2]))  
         return split_training_dict
             
     def setTreeLeaf(self, class_attr):
@@ -306,7 +310,7 @@ class DecisionTree (object):
         #    Set branch set, example = {{'Yes':{'Yes':3}, {'No':{'No':1}}
         #     class_attr, example = {'data': ['Yes', 'Yes', 'No', 'No'], 'attr_name': 'Enjoy'}
         #     each_attr_type in class_attr[DATA], example = Yes or No
-        #print('Construct Tree Leaf: Begin')     
+        if DEBUG > 1: print('Construct Tree Leaf: Begin')     
         branch_set = {}
         for each_attr_type in class_attr[DATA]:
             if branch_set.get(each_attr_type):
@@ -364,7 +368,7 @@ class DecisionTree (object):
             #        2. All classification data are same type
             #        3. No more attribute have to be processed.
             #    This is tree end situation
-            #    print("****Termination Condition****")
+                if DEBUG > 1: print("****Termination Condition****")
                 self.setTreeLeaf(_classification_attr)
                 return    
                          
@@ -394,7 +398,7 @@ class DecisionTree (object):
     def printDecisionTree (self, fg_branch = False):
         #Print the Decision Tree
         #    level-order traversal approach
-        #print ('Print Decision Tree: ')
+        if DEBUG > 1: print ('Print Decision Tree: ')
         level = 0
         _dt = self
         _print_queue = [{TREEROOT:_dt}] # to store tree node for next level

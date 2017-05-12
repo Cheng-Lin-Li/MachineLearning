@@ -1,4 +1,4 @@
-## This is an example implementation of FastMap Algorithm.
+## This is an implementation of FastMap Algorithm in Python 3.
 
 ## Machine Learning Algorithm: FastMap Algorithm.
 

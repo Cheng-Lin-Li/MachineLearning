@@ -105,18 +105,18 @@ occupied, prices, music
 
 ## Process
 
-	1. Create the data structure for training dataset and decision tree
+  1. Create the data structure for training dataset and decision tree
 
-	2. Initialize the decision tree
+  2. Initialize the decision tree
 
-	3. Calculate the best information gain and select the best feature to split
+  3. Calculate the best information gain and select the best feature to split
 
-	4. Create the child decision tree recursively and select the best feature for each child tree.
+  4. Create the child decision tree recursively and select the best feature for each child tree.
 
-	5. Calculate the entropy and record the label during building tree
+  5. Calculate the entropy and record the label during building tree
 
-	6. Return the tree
+  6. Return the tree
 
-	7. Make prediction for the testing data
+  7. Make prediction for the testing data
 
 
