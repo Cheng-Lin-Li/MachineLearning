@@ -13,7 +13,7 @@ The objects listed in fastmap-data.txt are actually the words in fastmap-wordlis
 
 
 ####  Input: fastmap-data.txt 
-The file name code in program but you can easily replace the code by your own to read the input file from parameters.
+The file name was coded in program at main section, but you can easily replace the code by your own to read the input file from parameters.
 
 ####  Output: a list of 2D vectors for each object.
 
