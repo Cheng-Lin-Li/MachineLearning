@@ -9,6 +9,10 @@ The first two columns in each line of the data file represent the IDs of the two
 
 The objects listed in fastmap-data.txt are actually the words in fastmap-wordlist.txt (nth word in this list has an ID value of n) and the distances between each pair of objects are the Damerau–Levenshtein distances between them. The program will plot the words onto a 2D plane using the previous FastMap solution and see what it looks like.
 
+#### Usage: python FastMap.py
+
+
+####  Input: fastmap-data.txt, the file name code in program but you can easily replace the code by your own to read the input file from parameters.
 
 ## Implementation features:
 A FastMap class is implemented and provide a lot of value sets for reference.
@@ -25,6 +29,21 @@ A FastMap class is implemented and provide a lot of value sets for reference.
         self.obj_set = A set() data type, to store the label of total objects. 
 
 
+## Data Structure
+  1.	All object pairs store in an array. 
+    a.	o_pair = [pair 1, pair 2, …, pair n]
+    b.	The data structure of each pair is [x, y]. x, and y stand for two object IDs.
+  2.	Distances store in an array. 
+    a.	Store distance of each object pair.
+    b.	dist = [distance of pair 1, distance of pair 2, …, distance of pair n].
+    c.	obj_k_d is an array stores object distances scale to k dimensions.
+  3.	New distance information stores in an array.
+    a.	_new_dist_set = [distance between pair 1 of projections in new hyper-plane, …, distance between pair n of projections in new hyper-plane]
+  4.	Objects store in a set.
+    a.	Store the label of total objects.
+    b.	obj_set = [object 1, …, object k]
+
+
 ## Process
 
   1. Assign k as the number of dimension that want to reduce to. 
@@ -39,4 +58,8 @@ A FastMap class is implemented and provide a lot of value sets for reference.
 
   6. Calculate the distance between each points on the new hyperplane H. 
 
-  7. Recursively apply step 3 ~ 6 (k) times for k dimensions. 8. Print and plot the result.
+  7. Recursively apply step 3 ~ 6 (k) times for k dimensions. 
+  
+  8. Print and plot the result.
+  
+  
