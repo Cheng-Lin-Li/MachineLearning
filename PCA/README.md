@@ -10,7 +10,7 @@ Program will output the directions of the first two principal components.
 #### Usage: python PCA.py
 
 
-#### Input:pca-data.txt
+#### Input: pca-data.txt
 The data file that contains the relevant records.
 The file name and target dimensions were coded at main section in program but you can easily replace the code by your own to read the input file from parameters.
 
@@ -18,18 +18,22 @@ The file name and target dimensions were coded at main section in program but yo
 
 
 ## Data Structure
-  1.	All data points store in an array. 
+  1.	All data points store in an array.
+   
     a.	The data structure is [point 0, point 1, …, point N-1]
     b.	For each point, the data structure is [x, y, z], in which x, y and z stand for the three coordinates respectively of points
     c.	mn_x is the data set after mean normalization.
   2.	Covariance stores in an array.
+  
     a.	covar: Store covariance of all data points, which is a n*n matrix.
   3.	Eigenvactor stores in an array.
+  
     a.	Store covariance of all data points, which is a n*n matrix.
     b.	eigenvector = [(eigenvector 1), (eigenvector 2), …, (eigenvector n)]. n is the dimension of data points.
     c.	sorted_eigenvector = [(eigenvector 1), (eigenvector 2), …, (eigenvector n)]
     d.	sorted_k_eigenvector = [(eigenvector 1), (eigenvector 2), …, (eigenvector k)]. k is the dimension we want to reduce to.
   4.	Eigenvalue stores in an array.
+  
     a.	Store weighted values of different eigenvector. covariance of all data points, which is a n*n matrix.
 
 
