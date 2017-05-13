@@ -123,62 +123,61 @@ class FastMap():
             For rest of iterations, we get the maximum distance and pivot objects directly from self.max_dist, self.Oa, self.Ob that were computed 
             during the "projection_on_hyper_plane()" step.          
         '''        
-        _Oa = 0
-        _original_Oa = 0
-        _Ob = object_pair[0][0]
-        _dist_set = distance_set
-        _pre_max_dist = 0
-        _max_dist = 0
-        _distance = 0
-        _b_get_max = False #The boolean flag to identify the program get the max. distance or not.
+        Oa = 0
+        original_Oa = 0
+        Ob = object_pair[0][0]
+        dist_set = distance_set
+        pre_max_dist = 0
+        max_dist = 0
+        b_get_max = False #The boolean flag to identify the program get the max. distance or not.
         
         if (self._col == 0):
-            while _b_get_max is False:
-                _Oa, _max_dist = self.get_max_distance(object_pair, _dist_set, _Ob)
-                if ( _max_dist >= _pre_max_dist and _original_Oa != _Oa and _max_dist != 0):
-                    _pre_max_dist = _max_dist
-                    _original_Oa = _Ob
-                    _Ob = _Oa  
+            while b_get_max is False:
+                Oa, max_dist = self.get_max_distance(object_pair, dist_set, Ob)
+                if ( max_dist >= pre_max_dist and original_Oa != Oa and max_dist != 0):
+                    pre_max_dist = max_dist
+                    original_Oa = Ob
+                    Ob = Oa  
                 else:
-                    _Oa = _original_Oa
-                    _max_dist = _pre_max_dist
-                    _b_get_max = True
+                    Oa = original_Oa
+                    max_dist = pre_max_dist
+                    b_get_max = True
                                         
-                    self._max_Oa = _Oa
-                    self._max_Ob = _Ob
-                    self._max_dist = _max_dist
+                    self._max_Oa = Oa
+                    self._max_Ob = Ob
+                    self._max_dist = max_dist
         else:
             # Directly get pivot objects and max. distance from the "projection_on_hyper_plane()" step.
-            _Oa = self._max_Oa
-            _Ob = self._max_Ob
-            _max_dist = self._max_dist
+            Oa = self._max_Oa
+            Ob = self._max_Ob
+            max_dist = self._max_dist
                        
-        return _Oa, _Ob, _max_dist
+        return Oa, Ob, max_dist
 
     def get_max_distance (self, object_pair, distance_set, Obj):
         '''
         Base on input object, "Obj", get farthest distance object then return 
         '''
-        _farthest_O = 0
-        _max_distance = 0
+        farthest_O = 0
+        max_distance = 0
         for idx, _each_pair in enumerate(object_pair):
             #Match object in each object pair
             if _each_pair[0] == Obj :
-                if distance_set[idx] >= _max_distance :
-                    _max_distance = distance_set[idx]
-                    _farthest_O = _each_pair[1]
+                if distance_set[idx] >= max_distance :
+                    max_distance = distance_set[idx]
+                    farthest_O = _each_pair[1]
                 else:
                     pass
             elif _each_pair[1] == Obj :
-                if distance_set[idx] >= _max_distance :
-                    _max_distance = distance_set[idx]
-                    _farthest_O = _each_pair[0] 
+                if distance_set[idx] >= max_distance :
+                    max_distance = distance_set[idx]
+                    farthest_O = _each_pair[0] 
                 else:
                     pass                   
             else:
                 pass
         
-        return _farthest_O, _max_distance
+        return farthest_O, max_distance
     
 
     def get_distance(self, object_pair, distance_set, xi, xj):
@@ -199,17 +198,17 @@ class FastMap():
         Compute the projection distance on pivot objects (Oa, Ob) for each object. 
         '''
         _xi = 0
-        _dis_set = distance_set
-        _obj_pair = object_pair
-        _Dai = 0
-        _Dab = self._max_dist
-        _Dbi = 0
+        dis_set = distance_set
+        obj_pair = object_pair
+        Dai = 0
+        Dab = self._max_dist
+        Dbi = 0
         
         for _idx, _i in enumerate(self.obj_set):
             # Calculate new distance xi and store as a new dimension into self.obj_k_d             
-            _Dai = self.get_distance(_obj_pair, _dis_set, Oa, _i)
-            _Dbi = self.get_distance(_obj_pair, _dis_set, Ob, _i)           
-            _xi = (_Dai**2 + _Dab**2 - _Dbi**2) / (2 * _Dab)
+            Dai = self.get_distance(obj_pair, dis_set, Oa, _i)
+            Dbi = self.get_distance(obj_pair, dis_set, Ob, _i)           
+            _xi = (Dai**2 + Dab**2 - Dbi**2) / (2 * Dab)
             self.obj_k_d[_idx][int(self._col)]=_xi
         
         return self.obj_k_d
@@ -221,31 +220,30 @@ class FastMap():
             The max. distance, Oa, Ob will be kept during the computation for next iteration.         
         '''
         _xi = 0
-        _obj_pair = object_pair
-        _dist_set = distance_set
-        _new_dist_set =np.zeros((len(_obj_pair), 1)) #New distance set in projected hyper-plane.
+        obj_pair = object_pair
+        new_dist_set =np.zeros((len(obj_pair), 1)) #New distance set in projected hyper-plane.
         _xi = xi_set
-        _col = col
-        _D_Oij = 0
-        _D_xij = 0
-        _max_dist = 0
-        _max_Oa = 0
-        _max_Ob = 0
+        col = col
+        D_Oij = 0
+        D_xij = 0
+        max_dist = 0
+        max_Oa = 0
+        max_Ob = 0
                 
-        for _idx, _pair in enumerate(_obj_pair) :
-            _D_Oij = self.get_distance(object_pair, distance_set, _pair[0], _pair[1])
-            _D_xij = abs(_xi[int(_pair[0]-1)][int(_col)] - _xi[int(_pair[1]-1)][int(_col)])
-            _new_dist_set[_idx] = np.sqrt((_D_Oij**2)-(_D_xij**2))
+        for _idx, _pair in enumerate(obj_pair) :
+            D_Oij = self.get_distance(object_pair, distance_set, _pair[0], _pair[1])
+            D_xij = abs(_xi[int(_pair[0]-1)][int(col)] - _xi[int(_pair[1]-1)][int(col)])
+            new_dist_set[_idx] = np.sqrt((D_Oij**2)-(D_xij**2))
             
-            if (_new_dist_set[_idx] >= _max_dist):
-                _max_dist = _new_dist_set[_idx]
-                _max_Oa = _pair[0]
-                _max_Ob = _pair[1]
+            if (new_dist_set[_idx] >= max_dist):
+                max_dist = new_dist_set[_idx]
+                max_Oa = _pair[0]
+                max_Ob = _pair[1]
                   
-        self._new_dist_set = _new_dist_set
-        self._max_dist = _max_dist
-        self._max_Oa = _max_Oa
-        self._max_Ob = _max_Ob
+        self._new_dist_set = new_dist_set
+        self._max_dist = max_dist
+        self._max_Oa = max_Oa
+        self._max_Ob = max_Ob
         
         return self._new_dist_set        
     
@@ -257,24 +255,24 @@ class FastMap():
         self.o_pair = object_pair
         self.dist = distance
         self.k = dimension
-        _Oa = 0
-        _Ob = 0
-        _max_dist = 0
-        _dist_set = np.array(distance)
-        _new_dist_set = np.array
-        _col = 0 # temp. variable to point to the column of x array with k dimension.        
+        Oa = 0
+        Ob = 0
+        max_dist = 0
+        dist_set = np.array(distance)
+        new_dist_set = np.array
+        col = 0 # temp. variable to point to the column of x array with k dimension.        
         self.obj_set = self.set_obj_set(object_pair)
         
-        while (_col < self.k) :
-            _Oa, _Ob, _max_dist = self.choose_distance_objects(self.o_pair, _dist_set)
+        while (col < self.k) :
+            Oa, Ob, _max_dist = self.choose_distance_objects(self.o_pair, dist_set)
             if (_max_dist == 0) :
                 break
             else:
-                self.calculate_projection_distance(self.o_pair, _dist_set, _Oa, _Ob)
-                _col += 1
-                self._col = _col
-                if(_col < self.k):
-                    _new_dist_set = self.projection_on_hyper_plane(self.o_pair, _dist_set, self.obj_k_d, _col-1) 
+                self.calculate_projection_distance(self.o_pair, dist_set, Oa, Ob)
+                col += 1
+                self._col = col
+                if(col < self.k):
+                    _new_dist_set = self.projection_on_hyper_plane(self.o_pair, dist_set, self.obj_k_d, col-1) 
                     #Base on previous xi, xj data to compute new distance
                     _dist_set = _new_dist_set
                 else:

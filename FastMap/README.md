@@ -12,7 +12,10 @@ The objects listed in fastmap-data.txt are actually the words in fastmap-wordlis
 #### Usage: python FastMap.py
 
 
-####  Input: fastmap-data.txt, the file name code in program but you can easily replace the code by your own to read the input file from parameters.
+####  Input: fastmap-data.txt 
+The file name code in program but you can easily replace the code by your own to read the input file from parameters.
+
+####  Output: a list of 2D vectors for each object.
 
 ## Implementation features:
 A FastMap class is implemented and provide a lot of value sets for reference.
