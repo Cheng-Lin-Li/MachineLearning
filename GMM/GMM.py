@@ -3,7 +3,7 @@
 '''
 Machine Learning Algorithm Name: Gaussian Mixture Model (GMM)
 
-This is a sample program to demonstrate the implementation of Gaussian Mixture Model (GMM) by Expectation Maximization (EM) algorithm
+This is a sample program to demonstrate the implementation of Expectation Maximization (em) algorithm for clustering using a Gaussian Mixture Model (GMM)
 
 @author:    Jianfa Lin
 @revise:    Cheng-Lin Li a.k.a. Clark
@@ -23,11 +23,12 @@ import numpy as np
 import random
 import math
 
+DEBUG = 0
 cluster_num = 3  # Number of Gaussian distributions
 givenCentroids = np.array([[3.083182557, 1.776213738], [-0.974765718, -0.684193041], [5.620165735, 5.026226344]])
 Alphas = np.array([31/150, 85/150, 34/150])
 Sigmas = np.array([[[1.0,0.0],[0.0,1.0]], [[1.0,0.0],[0.0,1.0]], [[1.0,0.0],[0.0,1.0]]])
-LIKELIHOOD = -10000.0
+LIKELIHOOD_THRESHOLD = 1e-3
 Mus = givenCentroids
 
 
@@ -56,11 +57,11 @@ def assignCentroids():
 
     
 '''
-GMM_Machine class
+GMM class
 Used to implement GMM algorithm
 '''
-class GMM_Machine():
-    def __init__(self, K, data, alpha=Alphas, mu=Mus, sigma=Sigmas, likelihood=LIKELIHOOD):
+class GMM():
+    def __init__(self, K, data, alpha=Alphas, mu=Mus, sigma=Sigmas, likelihood_threshold=LIKELIHOOD_THRESHOLD):
         self.K = K                        # Number of clusters
         self.data = np.array(data)        # Dataset
         self.N = len(data)                # Length of dataset
@@ -68,7 +69,8 @@ class GMM_Machine():
         self.alpha = np.array(alpha)      # K*1 array
         self.mu = np.array(mu)            # K*d array, in this case d=2
         self.sigma = np.array(sigma)      # K*d*d array, in this case d=2
-        self.likelihood = likelihood
+        self.likelihood = None
+        self.likelihood_threshold = LIKELIHOOD_THRESHOLD
         
     def Normal(self, Xi, Uk, Sk, d):
         # Calculate the value for Xi in normal distribution k
@@ -84,13 +86,12 @@ class GMM_Machine():
         # Calculate the maximum likelihood
 
         new_likelihood = 0
-#        for i in range(self.N):
         for i in range(self.N):
             temp = 0
             for k in range(self.K):
                 temp += self.alpha[k] * self.Normal(self.data[i].T, self.mu[k].T, self.sigma[k], self.data.shape[1])
             new_likelihood += np.log(temp)
-            #print('check temp type:',type(temp))
+            if DEBUG > 1: print('check temp type:',type(temp))
         
         print("New_likelihood:",new_likelihood)
         return new_likelihood
@@ -108,7 +109,7 @@ class GMM_Machine():
                 s[i] += temp[k]
             for k in range(self.K):
                 self.r[k][i] = temp[k]/s[i]
-#                print("self.r[k][i]=",self.r[k][i])
+                if DEBUG > 1: print("self.r[k][i]=",self.r[k][i])
     
     def Mstep(self):
         #M step
@@ -137,14 +138,14 @@ class GMM_Machine():
                 else:
                     summ += self.r[k][i] * np.dot(self.data[i]-self.mu[i], (self.data[i]-self.mu[i]).T)
             
-#            print("summ =",summ,"; np.sum(self.r[k]) =",np.sum(self.r[k]))
+            if DEBUG > 0: print("summ =",summ,"; np.sum(self.r[k]) =",np.sum(self.r[k]))
             self.sigma[k] = summ / np.sum(self.r[k])
-#            print("sigma[k]=",self.sigma[k])        
+            if DEBUG > 0: print("sigma[k]=",self.sigma[k])        
             
     def execute(self):
         new_lld = self.maximizeLLH()
         recursion = 0
-        while(new_lld - self.likelihood > 1e-3):
+        while((recursion == 0) or (new_lld - self.likelihood > self.likelihood_threshold)):
             self.likelihood = new_lld
             self.Estep()
             self.Mstep()
@@ -156,7 +157,7 @@ class GMM_Machine():
 if __name__ == '__main__':
     print ('This program execute\n')
     datapoints = getInputData('clusters.txt')
-    gmm = GMM_Machine(cluster_num, datapoints)
+    gmm = GMM(cluster_num, datapoints)
     gmm.execute()
     print("The likelihood is:", gmm.likelihood)
     print("The amplitudes are:", gmm.alpha)

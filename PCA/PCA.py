@@ -74,33 +74,33 @@ class PCA ():
         return self.mn_x
     
     def covariance_matrix(self, x):
-        _covar = np.array
+        covar = np.array
         _x = np.array(x)
 
-        _covar = np.cov(_x.T)  # Actually np.cov() will perform mean_normalizaation automatically.
-        self.covar = _covar
+        covar = np.cov(_x.T)  # Actually np.cov() will perform mean_normalizaation automatically.
+        self.covar = covar
 
         return self.covar
     
     def get_sorted_eigenvector_nk (self, covarience, k):
         # Get sorted eigenvalue by decreasing then return first k eigenvector. 
-        _eigenvalue = np.array
-        _eigenvector = np.array  
+        eigenvalue = np.array
+        eigenvector = np.array  
         _v = np.array     
-        _sorted_value_idx = np.array
+        sorted_value_idx = np.array
 
-        _eigenvector, _eigenvalue, _v = np.linalg.svd(covarience)
+        eigenvector, eigenvalue, _v = np.linalg.svd(covarience)
 
-        self.eigenvalue = _eigenvalue
-        self.eigenvector = _eigenvector
+        self.eigenvalue = eigenvalue
+        self.eigenvector = eigenvector
         
-        _sorted_value_idx = np.argsort(-_eigenvalue)  # Decreasing sort
+        sorted_value_idx = np.argsort(-eigenvalue)  # Decreasing sort
 
-        _eigenvector = _eigenvector[:, _sorted_value_idx]  # Get decreasing sort eigenvector
-        self.sorted_eigenvector = _eigenvector
+        eigenvector = eigenvector[:, sorted_value_idx]  # Get decreasing sort eigenvector
+        self.sorted_eigenvector = eigenvector
         
-        _eigenvalue = _eigenvalue[_sorted_value_idx]  # Get sorted eigenvalue
-        self.sorted_eigenvalue = _eigenvalue
+        eigenvalue = eigenvalue[sorted_value_idx]  # Get sorted eigenvalue
+        self.sorted_eigenvalue = eigenvalue
         
         self.sorted_k_eigenvector = self.sorted_eigenvector[:, :k]  # Get first K values from sorted eigenvalue
         
@@ -108,31 +108,31 @@ class PCA ():
     
     def k_dimension_projection(self, v, x):
         
-        _z_k = np.array
+        z_k = np.array
         
-        _z_k = v.T.dot(x.T)  # input data format should be transform for calculation.
+        z_k = v.T.dot(x.T)  # input data format should be transform for calculation.
         
-        return _z_k
+        return z_k
     
     def execute(self, datapoints, dimensions):
         '''
         Execute the PCA algorithm
         '''
-        _covar = self.covar
-        _z_k = np.array
-        _nx = np.array  # new data set after mean normalization
+        covar = self.covar
+        z_k = np.array
+        nx = np.array  # new data set after mean normalization
         self.x = datapoints
         self.k = dimensions
-        _v_k = np.array  # k eigenvector by decreasing sorted eigenvalue
+        v_k = np.array  # k eigenvector by decreasing sorted eigenvalue
         
         if(datapoints is None):
             return None
         else :        
-            _nx = self.mean_normalization(self.x)
-            _covar = self.covariance_matrix(_nx)
-            _v_k = self.get_sorted_eigenvector_nk(_covar, self.k)               
-            _z_k = self.k_dimension_projection(_v_k, _nx)
-            self.z_k_T = _z_k.T
+            nx = self.mean_normalization(self.x)
+            covar = self.covariance_matrix(nx)
+            v_k = self.get_sorted_eigenvector_nk(covar, self.k)               
+            z_k = self.k_dimension_projection(v_k, nx)
+            self.z_k_T = z_k.T
             return self.z_k_T  # Transform the format to data points matrix
 
     def plot(self):
@@ -145,28 +145,28 @@ class PCA ():
         ax.set_ylabel('Y Label')
         ax.set_zlabel('Z Label')
 
-        _data_set = self.z_k_T      
-        for i in range(len(_data_set)):
-            _x = _data_set[i][0]
-            _y = _data_set[i][1]
+        data_set = self.z_k_T      
+        for i in range(len(data_set)):
+            _x = data_set[i][0]
+            _y = data_set[i][1]
             _z = 0
-            _c_p = ax.scatter(_x, _y, _z, c='c', marker='^') 
+            c_p = ax.scatter(_x, _y, _z, c='c', marker='^') 
                          
-        _data_set = self.x
-        for i in range(len(_data_set)):
-            _x = _data_set[i][0]
-            _y = _data_set[i][1]
-            _z = _data_set[i][2]
-            _r_p = ax.scatter(_x, _y, _z, c='r', marker='o') 
+        data_set = self.x
+        for i in range(len(data_set)):
+            _x = data_set[i][0]
+            _y = data_set[i][1]
+            _z = data_set[i][2]
+            r_p = ax.scatter(_x, _y, _z, c='r', marker='o') 
         
-        ax.legend ([_c_p, _r_p], ['Projected data','Original data'])        
+        ax.legend ([c_p, r_p], ['Projected data','Original data'])        
         plt.show()
             
     
 def getInputData(filename):
     # Get data from data file
-    _data = np.genfromtxt(filename, delimiter='\t')
-    return _data    
+    data = np.genfromtxt(filename, delimiter='\t')
+    return data    
 
 
 if __name__ == '__main__':
