@@ -42,7 +42,7 @@ import numpy as np
 
 TRAINING_SET = 'downgesture_train.list'
 TESTING_SET = 'downgesture_test.list'
-DEFAULT_ACTIVATION = 'logistic'
+DEFAULT_ACTIVATION = 'logistic' # Or 'tanh' for tanH as activation function.
 LEARNING_RATE = 0.1 # Default learning rate
 ITERATION = 1000
 HIDDEN_LAYER_SIZES = [100,] #Hidden layer structure. The definition of [100, 10] is for multiple hidden layers, first layer with 100 neurals, and second hidden layer with 10 neurals,  

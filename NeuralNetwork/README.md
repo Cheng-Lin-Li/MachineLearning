@@ -23,11 +23,14 @@ The result should print out whether the prediction is correct for “down” ges
 There are 184 training data sets in downgesture_train.list and 83 testing data sets in downgesture_test.list. The training data sets and testing data sets are PGM image, which is a special to present grayscale graphic image.
 
 #### Usage: python NeuralNetwork.py
+Another program (Multidimensional-Output-NeuralNetwork.py) provide another example for multidimensional output.
 
 #### Input: A data file (downgesture_train.list) that contains 184 training data sets. A data file (downgesture_test.list) that contains 83 testing data sets. 
 Both file names and rest of neural network parameters defined in the global variable section. It is easy task to modify the code and get those parameters dynamically load during program execution time.
 
-Major parameters show as below:
+The default value of major parameters lists as below:
+
+DEFAULT_ACTIVATION = 'logistic' # Or 'tanh' for tanH as activation function.
 
 
 LEARNING_RATE = 0.1 # Default learning rate
