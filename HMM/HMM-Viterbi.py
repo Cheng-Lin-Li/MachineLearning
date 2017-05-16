@@ -152,7 +152,6 @@ def GetProbability(x_1, y_1, x, y, grid_world):
     else:
         return 0    
 
-# I revised the line: for i in range(0, int(_max_distance * NOISY_MAX /_decimal_unit)+1).
 def getDistance(towerlocation, grid_world):
     #DISTANCE_MATRIX: Store distance(observation) probability of each cell for each tower . 
     #=> [[tower1],...,[tower4]], 
