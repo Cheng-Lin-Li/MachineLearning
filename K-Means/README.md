@@ -43,3 +43,23 @@ The target cluster numbers, distance threshold can be assigned in global variabl
   
     a.	new_centroid = [ [x0, y0, n0], [x1, y1, n1], [x2, y2, n2]]
     b.	n0, n1, n2 = total number of points which identify belonging to these new centroids.
+
+## Process
+  1.	According to the required number of clusters, K, program randomly pick up K initial centroids from data set.
+  2.	Get all data points from input file, clusters.txt, into system. The data file contains 150 points of 2 dimensions’ data set.
+  3.	Calculate the distance for each data point and label the cluster:
+  
+    a.	Calculate the distance between K centroids and each data point.
+      i.	Label the data point to shortest distance of cluster by identification variable “data_classification” in data structure.
+      ii.	If the distance is the same, the data point will belong to first shortest centroid.
+      iii.	Record down the shortest distance for each point base on exist/old centroid points.
+  4.	Calculate the new centroids.
+  
+    a.	Base on the new groups of data points, calculate new centroids.
+    b.	Calculate the total distance for each new centroid with its own group of data points.
+  5.	Termination:
+  
+    a.	Condition:
+      i.	If the improve of total distance is less than 1e-9, we stop the process.
+    b.	Else repeat step 3 ~ 5.
+    
