@@ -27,6 +27,17 @@ There are 184 training data sets in downgesture_train.list and 83 testing data s
 #### Input: A data file (downgesture_train.list) that contains 184 training data sets. A data file (downgesture_test.list) that contains 83 testing data sets. 
 Both file names and rest of neural network parameters defined in the global variable section. It is easy task to modify the code and get those parameters dynamically load during program execution time.
 
+Major parameters show as below:
+
+LEARNING_RATE = 0.1 # Default learning rate
+ITERATION = 1000
+HIDDEN_LAYER_SIZES = [100,] #Hidden layer structure. The definition of [100, 10] is for multiple hidden layers, first layer with 100 neurals, and second hidden layer with 10 neurals,  
+LOWER_BOUND_INIT_WEIGHT = 0 #Lower bound of weight for each connection.
+UPPER_BOUND_INIT_WEIGHT = 1 #Upper bound of weight for each connection.
+BINARY_CLASSIFICATION = True #The output will be either 0 or 1 if it is True or present the actual output value if it set to False.
+THRESHOLD = 0.5 # Threshold for logistic activation function.
+TOLERANCE = 1e-6 # Threshold of output delta for neural network converge.
+CONSECUTIVE_TIMES = 10 # How many consecutive times the output delta less than tolerance to stop the training.
 
 ## Data Structure
 Training data and testing data are stored in array like [[data1], [data2], ... , [dataN]]. For [data1] = [value_dimension_1, value_dimension_2, ..., value_dimension_d].
