@@ -45,6 +45,7 @@ VALIDCELL2COORDINATION: Store the map between state to coordination of the grid
 import math
 import numpy as np
 
+DEBUG = 0 # 1 = print debug information, 2=detail steps information 
 INPUT_FILE = 'hmm-data.txt'
 DECIMAL_PRECISION = 1 #decimal place is 0.1**1
 GRID_WORLD_ROW = 10 # Y axis row
@@ -192,7 +193,9 @@ def getDistance(towerlocation, grid_world):
 
 
 def getCPT(grid_world):
-    #The ith row has a x coordinate of i, and the jth column has a y coordinate of j on the grid world.
+    #Calculate the conditional probability table
+    #  Compute the initial state and transition matrix from cell1 to cell2.
+    #  The ith row has a x coordinate of i, and the jth column has a y coordinate of j on the grid world.
     _s = [] #states
     _tm = [] #transition matrix
     _ip = [] #initial probability
@@ -233,7 +236,7 @@ def getCPT(grid_world):
         for _c in range (_valid_cells):
             #Calculate from St-1 to St. xt=f1, f2,...,f87
             _x_1, _y_1 = _valid2coord[_r+1] #Get Xt-1 position.
-            #print('x=%d, y=%d'%(_x, _y))
+            if DEBUG > 1: print('x=%d, y=%d'%(_x, _y))
             _x, _y = _valid2coord[_c+1] #Get Xt position.
             _tm[_r][_c] = GetProbability(_x_1, _y_1, _x, _y, grid_world)
             
@@ -242,7 +245,7 @@ def getCPT(grid_world):
 
 class HMM(object):
     '''
-    Currently only support Viterbi Algorithm but can adopt other algorithms into this module in the furture.
+    Currently only support Viterbi Algorithm but can adopt other algorithms into this module in the future.
     1. def viterbi(self, observation_seq): To support multiple evidences.
         Input: observation sequence of evidences.
         Return: decode the sequences of hidden state 
@@ -308,9 +311,9 @@ class HMM(object):
             else:
                 _states_max_prob, _previous_states = self.max_prob_state(_states_max_prob * self.transition_prob) 
                 _states_max_prob = _states_max_prob * _em_prob
-#                print('step', step)
-#                print('_states_max_prob:', _states_max_prob)
-#                print('_em_prob:', _em_prob)
+                if DEBUG > 0: print('step', step)
+                if DEBUG > 0: print('_states_max_prob:', _states_max_prob)
+                if DEBUG > 0: print('_em_prob:', _em_prob)
                 self.trace_back_states.append(_previous_states)
                 
         _states_seq.extend([self.max_prob(_states_max_prob)]) #Record down the highest probability of state in last time step.
@@ -346,7 +349,7 @@ class HMM(object):
         for _tmp_prob in _tmp_state_prob: #Consolidate evidence from multiple to one
             _state_prob *= _tmp_prob 
 
-#        print('Print the elimination results for step %d: %s'%(step, _state_prob))
+        if DEBUG > 0: print('Print the elimination results for step %d: %s'%(step, _state_prob))
         return _state_prob
         
     def max_prob_state(self, states_prob):
@@ -412,22 +415,22 @@ if __name__ == '__main__':
             Calculate the sequences of the state.
     '''      
     GRID_WORLD, TOWER_LOCATION, NOISY_DISTANCES = load_parameters(INPUT_FILE)
-#    Print_List(GRID_WORLD)
-#    print ('TOWER_LOCATION', TOWER_LOCATION)
-#    NOISY_DISTANCES.reverse()
+    if DEBUG > 0: Print_List(GRID_WORLD)
+    if DEBUG > 0: print ('TOWER_LOCATION', TOWER_LOCATION)
+#     NOISY_DISTANCES.reverse()
     print ('NOISY_DISTANCES', NOISY_DISTANCES)
 
     STATES, INITIAL_PROB, TRANSITION_MATRIX, VALIDCELL2COORDINATION = getCPT(GRID_WORLD)
     print('STATES,', STATES)
-#    print('INITIAL_PROB,', INITIAL_PROB)
-#    print('TRANSITION_MATRIX,')
-#    Print_List(TRANSITION_MATRIX)    
+    if DEBUG > 0: print('INITIAL_PROB,', INITIAL_PROB)
+    if DEBUG > 0: print('TRANSITION_MATRIX,')
+    if DEBUG > 0: Print_List(TRANSITION_MATRIX)    
     print('VALIDCELL2COORDINATION,', VALIDCELL2COORDINATION)
 
     DISTANCE_MATRIX, OBSERVATIONS = getDistance(TOWER_LOCATION, GRID_WORLD)
     print('OBSERVATIONS=', OBSERVATIONS)
-#    print ('DISTANCE_MATRIX for each tower')
-#    Print_List(DISTANCE_MATRIX)
+    if DEBUG > 0: print ('DISTANCE_MATRIX for each tower')
+    if DEBUG > 0: Print_List(DISTANCE_MATRIX)
     
     hmm = HMM(STATES, OBSERVATIONS, INITIAL_PROB, TRANSITION_MATRIX, DISTANCE_MATRIX, 'viterbi')
     state_sequence = hmm.decode(NOISY_DISTANCES)
