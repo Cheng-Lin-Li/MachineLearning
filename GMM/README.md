@@ -17,7 +17,11 @@ The target cluster numbers (Number of Gaussian distributions), initial centroids
 #### Output: Likelihood during every iteration, The amplitudes, means, and coveriances.
 
 ## Data Structure
-
+  0  .	All centroids/means store in a list/array.
+  
+    a.	There are two sets of centroids: centroids and new_centroids.
+    b.	centroid = [centroid point1, …, centroid point K]
+    c.	The data structure of each centroid is [x, y]
   1.	All data points store in a list/array.
    
     a.	datapoints = [point 0, point 1, …, point N-1]

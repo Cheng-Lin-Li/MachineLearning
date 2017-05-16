@@ -16,7 +16,7 @@ This is a sample program to demonstrate the implementation of K means
 @version:    2.1
 
 @create:    September, 25, 2016
-@updated:   February, 16, 2017
+@updated:   May, 15, 2017
 
 '''
 
@@ -71,7 +71,7 @@ class kmeans:
             self._move_step()
             self._terminate()
                
-        print('Recursion time:', self.t)
+        print('Recursion times:', self.t)
         print('Final centroids:', self.centroid)
         print('Weight:',self.weight)       
 
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     
     print ('This program execute\n')
     data_set = get_data ('clusters.txt')
-    kms = kmeans(data_set, 3, 1e-9)
+    kms = kmeans(data_set, K, CONVERGENCE)
     
 else:
     pass
