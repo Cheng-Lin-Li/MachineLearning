@@ -11,7 +11,7 @@ This is a sample program to demonstrate the implementation of Multilayer Neural 
 
 @license:    Licensed under the GNU v3.0. https://www.gnu.org/licenses/gpl.html
 
-@contact:    jianfali@usc.edu, clark.cl.li@gmail.com
+@contact:    clark.cl.li@gmail.com
 @version:    2.1
 
 @create:    October 28, 2016
