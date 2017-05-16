@@ -59,6 +59,8 @@ TOLERANCE = 1e-6 # Threshold of output delta for neural network converge.
 
 CONSECUTIVE_TIMES = 10 # How many consecutive times the output delta less than tolerance to stop the training.
 
+#### Output:
+The prediction result of testing sets and accuracy (correct) rate.
 
 ## Data Structure
 Training data and testing data are stored in array like [[data1], [data2], ... , [dataN]]. For [data1] = [value_dimension_1, value_dimension_2, ..., value_dimension_d].
