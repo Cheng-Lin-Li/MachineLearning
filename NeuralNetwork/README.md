@@ -131,41 +131,21 @@ self.tol = float. Tolerance of output and label data. If the tolerance between o
 
 
 ## Process
-Get input training data sets from files.
+  1. Get input training data sets from files.
+  2. Assign label to each data set according to its file name. If ‘down’ exists in file name, the label is 1, otherwise 0.
+  3. Class constructor initialize the hidden layers array, network layers array, activation function and other parameters according to user’s input.
+  4. Execute algorithm by execute() function.
+  5. Initialize weights vector randomly with each value between given range.
+  6. A while-loop trains the neural network with all training data sets and initial weight vector.
+  
+    a. According to Stochastic Learning approach, randomly pick up a data set from all training data sets.
+    b. Compute X_j^((l))=θ(∑_(i=0)^(d(l-1)) * w_ij^((l)) X_i^((l-1)) ) in the forward direction data set chosen in a. θ is an activation function, which can be both logistic sigmoid and hyperbolic tangent functions as what we set.	
+    c. Compute δ_j^((l-1))=(1-(X_i^((l-1)) )^2 ) ∑_(j=1)^(d(l)) * W_ij^((l))  δ_j^((l)) in the backward direction with corresponding result in step b.
 
 
-Assign label to each data set according to its file name. If ‘down’ exists in file name, the label is 1, otherwise 0.
+    d. Update weight vectors w_ij^((l)) by w_ij^((l))= w_ij^((l))- η*X_i^((l-1) )*δ_j^((l)). η is learning rate.
 
-
-Class constructor initialize the hidden layers array, network layers array, activation function and other parameters according to user’s input.
-
-
-Execute algorithm by execute() function.
-
-
-Initialize weights vector randomly with each value between given range.
-
-
-A while-loop trains the neural network with all training data sets and initial weight vector.
-
-
-According to Stochastic Learning approach, randomly pick up a data set from all training data sets.
-
-
-Compute $$X_j^((l) )=θ(∑_(i=0)^(d(l-1))▒〖w_ij^((l)) X_i^((l-1)) 〗)$$ in the forward direction data set chosen in a. θ is an activation function, which can be both logistic sigmoid and hyperbolic tangent functions as what we set.	
-
-
-Compute $$δ_j^((l-1))=(1-(X_i^((l-1)) )^2 ) ∑_(j=1)^(d(l))▒W_ij^((l))  δ_j^((l))$$ in the backward direction with corresponding result in step b.
-
-
-Update weight vectors w_ij^((l)) by w_ij^((l))= w_ij^((l))- 〖η*X〗_i^((l-1) )*δ_j^((l)) . η is learning rate.
-
-
-The program terminates when the maximum iteration was reached. The default iteration here is 1000.
-
-
-Get input testing data sets from files.
-
-
-Predict the label of each data set with trained neural network. If the prediction finds out the “down” gesture correctly, print “Match(O)”, otherwise “Match(X)”. Calculate and output the accuracy finally.
+  7. The program terminates when the maximum iteration was reached. The default iteration here is 1000.
+  8. Get input testing data sets from files.
+  9. Predict the label of each data set with trained neural network. If the prediction finds out the “down” gesture correctly, print “Match(O)”, otherwise “Match(X)”. Calculate and output the accuracy finally.
 
