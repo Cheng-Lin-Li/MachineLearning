@@ -11,11 +11,11 @@ This is a sample program to demonstrate the implementation of Hidden Markov Mode
 
 @license:    Licensed under the GNU v3.0. https://www.gnu.org/licenses/gpl.html
 
-@contact:    jianfali@usc.edu, clark.cl.li@gmail.com
+@contact:    clark.cl.li@gmail.com
 @version:    2.1
 
 @create:    November 28, 2016
-@updated:   February, 16, 2017
+@updated:   May, 15, 2017
 
 The states of this assignment are the position of cells which define from f1=(0,0), f2=(1,0), f3=(2,0)...f87=(9,9)
 The symbols of this assignment are distance of each tower which define from 0.1, 0.2, ..., 12.7.
@@ -45,6 +45,7 @@ VALIDCELL2COORDINATION: Store the map between state to coordination of the grid
 import math
 import numpy as np
 
+INPUT_FILE = 'hmm-data.txt'
 DECIMAL_PRECISION = 1 #decimal place is 0.1**1
 GRID_WORLD_ROW = 10 # Y axis row
 GRID_WORLD_COLUMN = 10 # X axis elements in each row
@@ -410,7 +411,7 @@ if __name__ == '__main__':
             Construct HMM with states, observation...etc. data.
             Calculate the sequences of the state.
     '''      
-    GRID_WORLD, TOWER_LOCATION, NOISY_DISTANCES = load_parameters('hmm-data.txt')
+    GRID_WORLD, TOWER_LOCATION, NOISY_DISTANCES = load_parameters(INPUT_FILE)
 #    Print_List(GRID_WORLD)
 #    print ('TOWER_LOCATION', TOWER_LOCATION)
 #    NOISY_DISTANCES.reverse()
