@@ -18,17 +18,39 @@ The text file include the map of 2D grid-world, the location of towers that send
 
 
 ## Data Structure:
-  1. STATES: States list to store labels of each state.  [state1, state2, ..., stateN].
-  2. TOWER_LOCATION: location list for towers  [tower1[x1,y1], ..., towerN[xN,yN]]
-  3. NOISY_DISTANCES: The observation sequence of evidence  [Time1[distance between robot and Tower1, ..., distance between robot and TowerN], ..., TimeN[distance between robot and Tower1, ..., distance between robot and TowerN]]
-  4. OBSERVATIONS = []: Observation list to store labels of evidence  [observation1, observation2,..., observationN]
-  5. INITIAL_PROB: The matrix of probability from system start to first state.  [[probability from start to state1, ..., probability from start to stateN]]
-  6. TRANSITION_MATRIX  [Time T at state1[Probability to Time T+1 to state1,..., Probability to Time T+1 to stateN], ..., Time T at stateN[Probability to Time T+1 to state1,..., Probability to Time T+1 to stateN]]
-  7. EVIDENCE_MATRIX: Store observation of evidence. It support multiple evidences in the same time step.  [[evidence1],[evidence2],...,[evidenceN]], [evidenceN]=[state1[Probability of evidence1, ..., Probability of evidenceN], ..., stateN[Probability of evidence1, ..., Probability of evidenceN]]
-  8. DISTANCE_MATRIX: Store distance(observation) probability of each cell for each tower.  [[tower1],...,[tower4]], [tower1]=[cell1[Probability of distance0, ..., Probability of distanceN]]
-  9. VALIDCELL2COORDINATION: Store the map between state to coordination of the grid.  {state1,[x,y], ...,stateN[x,y]}
-  10. DISTANCE_MATRIX: Store distance(observation) probability of each cell for each tower  [[tower1],...,[tower4]]  [tower1]=[cell1[Probability of distance0, ..., Probability of distanceN]] stateN[Probability of evidence1, ..., Probability of evidenceN]]
-  11. _state_prob: List of consolidate probability for every state at time t.  [probability of state1, ..., probability of stateN]
+  1. STATES: States list to store labels of each state
+  
+    => [state1, state2, ..., stateN].
+  2. TOWER_LOCATION: location list for towers
+  
+    => [tower1[x1,y1], ..., towerN[xN,yN]]
+  3. NOISY_DISTANCES: The observation sequence of evidence
+  
+    => [Time1[distance between robot and Tower1, ..., distance between robot and TowerN], ..., TimeN[distance between robot and Tower1, ..., distance between robot and TowerN]]
+  4. OBSERVATIONS = []: Observation list to store labels of evidence
+  
+    => [observation1, observation2,..., observationN]
+  5. INITIAL_PROB: The matrix of probability from system start to first state
+  
+    => [[probability from start to state1, ..., probability from start to stateN]]
+  6. TRANSITION_MATRIX
+  
+    => [Time T at state1[Probability to Time T+1 to state1,..., Probability to Time T+1 to stateN], ..., Time T at stateN[Probability to Time T+1 to state1,..., Probability to Time T+1 to stateN]]
+  7. EVIDENCE_MATRIX: Store observation of evidence. It support multiple evidences in the same time step.
+  
+    => [[evidence1],[evidence2],...,[evidenceN]], [evidenceN]=[state1[Probability of evidence1, ..., Probability of evidenceN], ..., stateN[Probability of evidence1, ..., Probability of evidenceN]]
+  8. DISTANCE_MATRIX: Store distance(observation) probability of each cell for each tower
+  
+    => [[tower1],...,[tower4]], [tower1]=[cell1[Probability of distance0, ..., Probability of distanceN]]
+  9. VALIDCELL2COORDINATION: Store the map between state to coordination of the grid
+  
+    => {state1,[x,y], ...,stateN[x,y]}
+  10. DISTANCE_MATRIX: Store distance(observation) probability of each cell for each tower
+  
+    => [[tower1],...,[tower4]]  [tower1]=[cell1[Probability of distance0, ..., Probability of distanceN]] stateN[Probability of evidence1, ..., Probability of evidenceN]]
+  11. _state_prob: List of consolidate probability for every state at time t
+  
+    => [probability of state1, ..., probability of stateN]
 
 
 ## Process:
