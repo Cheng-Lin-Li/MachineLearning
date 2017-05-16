@@ -15,7 +15,7 @@ This is a sample program to demonstrate the implementation of Multilayer Neural 
 @version:    2.1
 
 @create:    October 28, 2016
-@updated:   February, 16, 2017
+@updated:   May, 15, 2017
 
     A Neural Network class supports on both logistic sigmoid and hyperbolic tangent functions as activation functions, resolver is stochastic gradient descent to implement and provide a lot of value sets for reference.
         1. This implementation apply Stochastic learning approach where single example is randomly chosen from training set at each iteration.
@@ -40,10 +40,15 @@ This is a sample program to demonstrate the implementation of Multilayer Neural 
 
 import numpy as np
 
+TRAINING_SET = 'downgesture_train.list'
+TESTING_SET = 'downgesture_test.list'
 LEARNING_RATE = 0.1 # Default learning rate
 DEFAULT_ACTIVATION = 'logistic'
 ITERATION = 1000
-HIDDEN_LAYER_SIZES = 100
+HIDDEN_LAYER_SIZES = [100,]
+LOWER_BOUND_INIT_WEIGHT = 0
+UPPER_BOUND_INIT_WEIGHT = 1
+BINARY_CLASSIFICATION = True
 THRESHOLD = 0.5 # Threshold for logistic activation function.
 TOLERANCE = 1e-6 # Threshold of output delta for neural network converge.
 CONSECUTIVE_TIMES = 10 # How many consecutive times the output delta less than tolerance to stop the training.
@@ -159,28 +164,28 @@ class NeuralNetwork(object):
         # self.weights = weights array = [[Weights of level-01], [Weights of level-12], ..., [Weights of level-(L-1)(L)]]. 
         # For [Weights of level-01]=[[w01, w02, ..., w0d], [w11, w12, ..., w1d], ... [wd1, wd2, ..., wdd]]
         
-        _weights = []
-        _scale = 0 # optimal scale of weight is m**(-1/2)
+        weights = []
+        scale = 0 # optimal scale of weight is m**(-1/2)
         for l in range(1, len(network_layer_sizes)):
-                _scale = (network_layer_sizes[l-1])**(-1/2)
-                _weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))                   
-#                _weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(scale=_scale, size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))   
+                scale = (network_layer_sizes[l-1])**(-1/2)
+                weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))                   
+                #There are different approach to optimal the distribution of weights.
+#                weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(scale=_scale, size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))   
                 np.random.random
-        self.weights = _weights
+        self.weights = weights
         return self.weights
 
     def set_layer_sizes(self, training_data, training_data_label):
         #Construct the whole neural network structure, include [input layer sizes, hidden layer 1 sizes, ...hidden layer L sizes, output layer sizes]
-        _dim = 0
-        _network_layer_sizes = []
-        _dim = training_data.ndim;
-        if _dim != 0:
+        network_layer_sizes = []
+        dim = training_data.ndim;
+        if dim != 0:
             self.input_numbers, self.input_dimensions = training_data.shape
         else:
             pass
-        _dim = training_data_label.ndim;
-        if _dim !=0:
-            if _dim == 1:
+        dim = training_data_label.ndim;
+        if dim !=0:
+            if dim == 1:
                 self.output_numbers = training_data_label.shape[0]
                 self.output_dimensions = 1;
             else:
@@ -188,39 +193,38 @@ class NeuralNetwork(object):
         else:
             pass
         
-        _network_layer_sizes.append(self.input_dimensions+1) # add X0
+        network_layer_sizes.append(self.input_dimensions+1) # add X0
         
         for i in self.hidden_layer_sizes:
-            _network_layer_sizes.append(i)
+            network_layer_sizes.append(i)
         
-        _network_layer_sizes.append(self.output_dimensions) 
-        self.network_layer_sizes = np.array(_network_layer_sizes)
+        network_layer_sizes.append(self.output_dimensions) 
+        self.network_layer_sizes = np.array(network_layer_sizes)
 
         return self.network_layer_sizes
     
     def feed_forward(self, input_data):
-        _X = [np.concatenate((np.ones(1).T, np.array(input_data)), axis=0)] #add bias unit [array([])]
-        _network_layer_sizes = self.network_layer_sizes
-        _W = self.weights
+        X = [np.concatenate((np.ones(1).T, np.array(input_data)), axis=0)] #add bias unit [array([])]
+        W = self.weights
         _wijxi = []
         _xj = []
         
-        for l in range(0, len(_W)):
-            _wijxi = np.dot(_X[l], _W[l])
+        for l in range(0, len(W)):
+            _wijxi = np.dot(X[l], W[l])
             _xj = self.activation(_wijxi)
             # Setup bias term for each hidden layer, x0=1
-            if l < len(_W)-1:
+            if l < len(W)-1:
                 _xj[0] = 1 
-            _X.append(_xj)  
+            X.append(_xj)  
             
-        self.X = _X
-        return _X[-1] #return the feed forward result of final level.         
+        self.X = X
+        return X[-1] #return the feed forward result of final level.         
     
     def back_propagate(self, output, label_data):
-        _X = self.X
-        _W = list(self.weights) #self.weights=<class list>[array([ndarray[100],ndarray[100],...X961]), array(ndarray[1],ndarray[1],...X100)]
-        _avg_err = []
-        _Delta = []
+        X = self.X
+        W = list(self.weights) #self.weights=<class list>[array([ndarray[100],ndarray[100],...X961]), array(ndarray[1],ndarray[1],...X100)]
+        avg_err = []
+        Delta = []
         _x = []
         _d = []
         _w = []
@@ -229,34 +233,34 @@ class NeuralNetwork(object):
         _y = np.atleast_2d(label_data)   
         _x = np.atleast_2d(output)
         # Base level L delta calculation.
-        _avg_err = np.average(_x - _y)
-        _Delta = [self.error_term_derivation(_x, _y) * self.activation_derivation(_x)] # Delta = error term derivation * activation function derivation
+        avg_err = np.average(_x - _y)
+        Delta = [self.error_term_derivation(_x, _y) * self.activation_derivation(_x)] # Delta = error term derivation * activation function derivation
         # #<class list>[array([])]
         
         # Calculate all deltas and adjust weights
-        for l in range(len(_X)-2, 0, -1):
-            _d = np.atleast_2d(_Delta[-1])
-            _x = np.atleast_2d(_X[l])
-            _w = np.array(_W[l])
+        for l in range(len(X)-2, 0, -1):
+            _d = np.atleast_2d(Delta[-1])
+            _x = np.atleast_2d(X[l])
+            _w = np.array(W[l])
 
-            _Delta.append( self.activation_derivation(_x) * _Delta[-1].dot(_w.T) )    
-            _W[l] -= self.learning_rate * _x.T.dot(_d)
+            Delta.append( self.activation_derivation(_x) * Delta[-1].dot(_w.T) )    
+            W[l] -= self.learning_rate * _x.T.dot(_d)
 
         #Calculate the weight of input layer and update weight array
-        _x = np.atleast_2d(_X[l-1])
-        _d = np.atleast_2d(_Delta[-1])            
-        _W[l-1] -= self.learning_rate * _x.T.dot(_d)        
+        _x = np.atleast_2d(X[l-1])
+        _d = np.atleast_2d(Delta[-1])            
+        W[l-1] -= self.learning_rate * _x.T.dot(_d)        
         
-        self.weights = _W
-        return _avg_err
+        self.weights = W
+        return avg_err
     
     def predict(self, x):
         _r = []
         _r = self.feed_forward(x[0])
-        _enable_binary_classification = self.enable_binary_classification
+        enable_binary_classification = self.enable_binary_classification
         
         # Enable the binary classification on predict results.
-        if _enable_binary_classification and self.activation == self.logistic:
+        if enable_binary_classification and self.activation == self.logistic:
             for i in range(len(_r)):
                 if _r[i] >= THRESHOLD:
                     _r[i] = 1
@@ -272,30 +276,29 @@ class NeuralNetwork(object):
         '''
         self.training_data = np.array(training_data)
         self.training_data_label = np.array(training_data_label)
-        _network_layer_sizes = self.set_layer_sizes(self.training_data, self.training_data_label)        
-        _max_iter = self.max_iteration
-        _input_numbers = self.input_numbers
-        _input_seq = []
-        _avg_err = 0
-        _counter = 0
+        network_layer_sizes = self.set_layer_sizes(self.training_data, self.training_data_label)        
+        max_iter = self.max_iteration
+        input_numbers = self.input_numbers
+        avg_err = 0
+        counter = 0
         
-        self.initial_weights(_network_layer_sizes)
+        self.initial_weights(network_layer_sizes)
         
         # Execute training.
-        for idx in range (0, _max_iter): 
+        for idx in range (0, max_iter): 
             i = np.random.randint(self.training_data.shape[0])
-            _result = self.feed_forward(training_data[i])
-            _avg_err = self.back_propagate(_result, training_data_label[i])
-            if abs(_avg_err) <= self.tol :
-                _counter += 1
-                if _counter >= CONSECUTIVE_TIMES:
+            result = self.feed_forward(training_data[i])
+            avg_err = self.back_propagate(result, training_data_label[i])
+            if abs(avg_err) <= self.tol :
+                counter += 1
+                if counter >= CONSECUTIVE_TIMES:
                     break
                 else:
                     pass
             else:
                 _counter = 0
         print ('Neural Network Converge at iteration =', idx+1)                
-        print('Total input numbers=', _input_numbers)    
+        print('Total input numbers=', input_numbers)    
 
 '''
 Main program for the NeuralNetwork class execution.
@@ -314,7 +317,7 @@ if __name__ == '__main__':
     images = []
     labels = []
     
-    with open('downgesture_train.list') as f:
+    with open(TRAINING_SET) as f:
         for training_image in f.readlines():
             training_image = training_image.strip()
             images.append(load_pgm_image(training_image))
@@ -323,17 +326,17 @@ if __name__ == '__main__':
             else:
                 labels.append([0,])  
     
-    nn = NeuralNetwork(hidden_layer_sizes=[100,], activation='logistic', learning_rate=0.1, iteration=1000, weight_low=0, weight_high=1, enable_binary_classification=True)
+    nn = NeuralNetwork(hidden_layer_sizes=HIDDEN_LAYER_SIZES, activation=DEFAULT_ACTIVATION, learning_rate=LEARNING_RATE, iteration=ITERATION, weight_low=LOWER_BOUND_INIT_WEIGHT, weight_high=UPPER_BOUND_INIT_WEIGHT, enable_binary_classification=BINARY_CLASSIFICATION)
     nn.execute(images, labels)
     total = 0
     correct = 0
-    _dim = np.array(labels).ndim;
-    if _dim == 1:
+    dim = np.array(labels).ndim;
+    if dim == 1:
         threshold_array = np.array(THRESHOLD)
     else:
         threshold_array = np.array(THRESHOLD)*np.array(labels).shape[1]
     
-    with open('downgesture_test.list') as f:
+    with open(TESTING_SET) as f:
 
         for test_image in f.readlines():
             total += 1
@@ -353,5 +356,4 @@ if __name__ == '__main__':
                     print('Match(X)=>{}: Predict=False, Output value={}'.format(test_image, p)) 
     #print(nn.weights)
     print('Accuracy: correct rate: {}%'.format(correct / total*100))
-          
-          
+    
