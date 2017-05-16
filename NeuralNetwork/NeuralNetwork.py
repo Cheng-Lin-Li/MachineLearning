@@ -42,13 +42,13 @@ import numpy as np
 
 TRAINING_SET = 'downgesture_train.list'
 TESTING_SET = 'downgesture_test.list'
-LEARNING_RATE = 0.1 # Default learning rate
 DEFAULT_ACTIVATION = 'logistic'
+LEARNING_RATE = 0.1 # Default learning rate
 ITERATION = 1000
-HIDDEN_LAYER_SIZES = [100,]
-LOWER_BOUND_INIT_WEIGHT = 0
-UPPER_BOUND_INIT_WEIGHT = 1
-BINARY_CLASSIFICATION = True
+HIDDEN_LAYER_SIZES = [100,] #Hidden layer structure. The definition of [100, 10] is for multiple hidden layers, first layer with 100 neurals, and second hidden layer with 10 neurals,  
+LOWER_BOUND_INIT_WEIGHT = 0 #Lower bound of weight for each connection.
+UPPER_BOUND_INIT_WEIGHT = 1 #Upper bound of weight for each connection.
+BINARY_CLASSIFICATION = True #The output will be either 0 or 1 if it is True or present the actual output value if it set to False.
 THRESHOLD = 0.5 # Threshold for logistic activation function.
 TOLERANCE = 1e-6 # Threshold of output delta for neural network converge.
 CONSECUTIVE_TIMES = 10 # How many consecutive times the output delta less than tolerance to stop the training.
