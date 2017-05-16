@@ -1,4 +1,4 @@
-# This is an implementation of Hidden Markov Model (HMM) - Viterbi Algorithm
+# This is an implementation of Hidden Markov Model (HMM) - Viterbi Algorithm in Python 3
 
 ## Machine Learning Algorithm: Hidden Markov Model - Viterbi Algorithm.
 
