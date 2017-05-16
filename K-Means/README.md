@@ -13,7 +13,7 @@ Report the Report the centroid and the weight (number of elements in the cluster
 #### Usage: python K-Means.py
 
 #### Input: A data file (clusters.txt) that contains 150 2D points. Each row in the file contains the coordinates of a single point.
-The target cluster numbers, distance threshold can be assigned in global variable. It is easy to modify the code and get those inputs dynamically from program execution parameters.
+The target cluster numbers, distance threshold can be assigned in global variable. It is easy task to modify the code and get those parameters dynamically load during program execution time.
 
 #### Output: new and current sum of distance between each point to its centroid, recursion times, final centroids and weights for each cluster.
 

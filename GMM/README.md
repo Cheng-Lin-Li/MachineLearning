@@ -12,7 +12,7 @@ Report the mean (centroids), amplitude and covariance matrix of each Gaussian in
 #### Usage: python GMM.py	
 
 #### Input: A data file (clusters.txt) that contains 150 2D points. Each row in the file contains the coordinates of a single point.
-The target cluster numbers (Number of Gaussian distributions), initial centroids (means), alpha (amplitudes), sigma (covariances), likelihood_threshold can be assigned in global variable. It is easy to modify the code and get those inputs dynamically from program execution parameters.
+The target cluster numbers (Number of Gaussian distributions), initial centroids (means), alpha (amplitudes), sigma (covariances), likelihood_threshold can be assigned in global variable. It is easy task to modify the code and get those parameters dynamically load during program execution time.
 
 #### Output: Likelihood during every iteration, The amplitudes, means, and coveriances.
 

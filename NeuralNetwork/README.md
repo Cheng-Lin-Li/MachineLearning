@@ -1,4 +1,4 @@
-## This is an example implementation of Neural Network Algorithm
+## This is an implementation of Neural Network Algorithm in Python 3
 
 ## Machine Learning Algorithm: Neural Network Algorithm.
 
@@ -9,7 +9,7 @@ The neural network support multiple layers with multiple dimensions input and on
 In the directory gestures, there is a set of images that display "down" gestures (i.e., thumbs-down images) or other gestures. In this assignment, the program is required to implement the Back Propagation algorithm for Feed Forward Neural Networks to learn down gestures from training images available in downgesture_train.list. 
 
 
-The label of an image is 1 if the word "down" is in its file name; otherwise the label is 0. The pixels of an image use the gray scale ranging from 0 to 1. In your network, use one input layer, one hidden layer of size 100, and one output node. Use the value 0.1 for the learning rate. For each perceptron, use the sigmoid function (s) = 1/(1+eƟ -s). Use 1000 training epochs; initialize all w randomly between -1000 to 1000 (you can also choose your own initialization approach, as long as it works); and then use the trained network to predict the labels for the gestures in the test images available in downgesture_test.list. For the error function, use the standard least square error function. Output predictions and accuracy.
+The label of an image is 1 if the word "down" is in its file name; otherwise the label is 0. The pixels of an image use the gray scale ranging from 0 to 1. In your network, use one input layer, one hidden layer of size 100, and one output node. Use the value 0.1 for the learning rate. For each perceptron, use the sigmoid function Ɵ(s) = 1/(1+e^-s). Use 1000 training epochs; initialize all w randomly between 0 to 1; and then use the trained network to predict the labels for the gestures in the test images available in downgesture_test.list. For the error function, use the standard least square error function. Output predictions and accuracy.
 
 
 The image file format is "pgm" <http://netpbm.sourceforge.net/doc/pgm.html>. You may follow the link for the format details. 
@@ -21,6 +21,11 @@ Implement the Back Propagation algorithm for Feed Forward Neural Networks to lea
 The result should print out whether the prediction is correct for “down” gesture, the prediction result and the accuracy of prediction.
 
 There are 184 training data sets in downgesture_train.list and 83 testing data sets in downgesture_test.list. The training data sets and testing data sets are PGM image, which is a special to present grayscale graphic image.
+
+#### Usage: python NeuralNetwork.py
+
+#### Input: A data file (downgesture_train.list) that contains 184 training data sets. A data file (downgesture_test.list) that contains 83 testing data sets. 
+Both file names and rest of neural network parameters defined in the global variable section. It is easy task to modify the code and get those parameters dynamically load during program execution time.
 
 
 ## Data Structure

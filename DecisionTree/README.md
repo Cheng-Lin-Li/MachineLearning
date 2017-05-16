@@ -44,14 +44,13 @@ TESTING_SET2 = [{'attr_name': 'Size', 'data': ['Large']}, {'attr_name': 'Occupie
 
 TESTING_SET3 = [{'attr_name': 'Size', 'data': ['Large']}, {'attr_name': 'Occupied', 'data': ['Moderate']}, {'attr_name': 'Price', 'data': ['Normal']}, {'attr_name': 'Music', 'data': ['Loud']}, {'attr_name': 'Location', 'data': ['City-Center']}, {'attr_name': 'VIP', 'data': ['No']}, {'attr_name': 'Favorite Beer', 'data': ['Yes']}]
 
+It is easy task to modify the code and get those parameters dynamically load during program execution time.
 
 The code prints the decision tree that it produces, the format is:
 attribute on the 1st level
 1st attribute on the 2nd level, 2nd attribute on the 2nd level, 3rd attribute on the 2nd level ...
 
-For example, if the program uses 'size' as the root, occupied, prices and music as the attributes on the second level corresponding to size={Large, Medium, Small} respectively, 
-
-then it should look like the following:
+For example, if the program uses 'size' as the root, occupied, prices and music as the attributes on the second level corresponding to size={Large, Medium, Small} respectively, then it should look like the following:
 
 #### Output:
 
