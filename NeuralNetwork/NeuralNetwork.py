@@ -105,7 +105,7 @@ class NeuralNetwork(object):
 
     '''   
     def __init__(self, hidden_layer_sizes=HIDDEN_LAYER_SIZES, activation=DEFAULT_ACTIVATION, iteration=ITERATION, learning_rate=LEARNING_RATE, 
-                 training_data=None, training_data_label=None, weight_low=0, weight_high=1, enable_binary_classification = True, tol = TOLERANCE):
+                 training_data=None, training_data_label=None, weight_low=LOWER_BOUND_INIT_WEIGHT, weight_high=UPPER_BOUND_INIT_WEIGHT, enable_binary_classification = BINARY_CLASSIFICATION, tol = TOLERANCE):
         '''
         Constructor
         '''
@@ -297,7 +297,7 @@ class NeuralNetwork(object):
                     pass
             else:
                 _counter = 0
-        print ('Neural Network Converge at iteration =', idx+1)                
+        print('Neural Network Converge at iteration =', idx+1)                
         print('Total input numbers=', input_numbers)    
 
 '''
