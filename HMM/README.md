@@ -47,7 +47,8 @@ The text file include the map of 2D grid-world, the location of towers that send
     => {state1,[x,y], ...,stateN[x,y]}
   10. DISTANCE_MATRIX: Store distance(observation) probability of each cell for each tower
   
-    => [[tower1],...,[tower4]]  [tower1]=[cell1[Probability of distance0, ..., Probability of distanceN]] stateN[Probability of evidence1, ..., Probability of evidenceN]]
+    => [[tower1],...,[tower4]]
+    => [tower1]=[cell1[Probability of distance0, ..., Probability of distanceN]] stateN[Probability of evidence1, ..., Probability of evidenceN]]
   11. _state_prob: List of consolidate probability for every state at time t
   
     => [probability of state1, ..., probability of stateN]
