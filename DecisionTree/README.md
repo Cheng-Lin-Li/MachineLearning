@@ -65,44 +65,44 @@ occupied, prices, music
 
 ## Data Structure
 
-	TRAINING_SET = [{'attr_name':'attribute1', 'data':['type1, type1, type2...']}, {}, ..., {}]  //Store the training data. e.g. { 'attr_name': 'Occupied', 'data': ['High', 'High', 'Moderate',..., 'Low']}
+  1. TRAINING_SET = [{'attr_name':'attribute1', 'data':['type1, type1, type2...']}, {}, ..., {}]  //Store the training data. e.g. { 'attr_name': 'Occupied', 'data': ['High', 'High', 'Moderate',..., 'Low']}
 
-	TESTING_SET = [{'attr_name':'attribute1', 'data':['type1, type1, type2...']}, {}, ..., {}]  //Store the testing data
+  2. TESTING_SET = [{'attr_name':'attribute1', 'data':['type1, type1, type2...']}, {}, ..., {}]  //Store the testing data
 
-	branchset = { {'branch_name1': {'classification_type1': counter... 'classification_typeN': counter}, 'branch_name2': {...} } }  //Store the branches of each node
+  3. branchset = { {'branch_name1': {'classification_type1': counter... 'classification_typeN': counter}, 'branch_name2': {...} } }  //Store the branches of each node
 
-	child_tree = {'branch_name1':DecisionTree1, 'branch_name2':DecisionTree2 ...}  //Store the child trees of each node
+  4. child_tree = {'branch_name1':DecisionTree1, 'branch_name2':DecisionTree2 ...}  //Store the child trees of each node
 
-	branch_total_count = {'branch_name1':total_count_of_record,..., 'branch_nameN': total_count_of_record}  //Store the number of cases in each branch of the node
+  5. branch_total_count = {'branch_name1':total_count_of_record,..., 'branch_nameN': total_count_of_record}  //Store the number of cases in each branch of the node
 
 
 ## Main Methods
 
-	def __init__  //Initialize decision tree
+  1. def __init__  //Initialize decision tree
 
-	def setBranchSet  //Create branch data set for an node
+  2. def setBranchSet  //Create branch data set for an node
 
-	def setChildTree  //Create Child Tree base on best information gain attribute into child tree list
+  3. def setChildTree  //Create Child Tree base on best information gain attribute into child tree list
 
-	def individBranchEntropy  //Calculate the entropy value of individual branch with specific attribute/node. 
+  4. def individBranchEntropy  //Calculate the entropy value of individual branch with specific attribute/node. 
 
-	def sumBranchEntropy  //Calculate the sum of entropy value by each weighted branch.
+  5. def sumBranchEntropy  //Calculate the sum of entropy value by each weighted branch.
 
-	def getNodeEntropy  //Caluculate Node Entropy
+  6. def getNodeEntropy  //Caluculate Node Entropy
 
-	def getNodeInfoGain  //Information Gain = Node entropy - Sum of weighted branch entropy
+  7. def getNodeInfoGain  //Information Gain = Node entropy - Sum of weighted branch entropy
 
-	def NumClassfication   //Calculate the number of type in the specific classification
+  8. def NumClassfication   //Calculate the number of type in the specific classification
 
-	def getSplitTrainingSetByAttr  //Split training set into subset by best information gain attribute & attribute type. 
+  9. def getSplitTrainingSetByAttr  //Split training set into subset by best information gain attribute & attribute type. 
 
-	def setTreeLeaf  //Construct node of tree end
+  10. def setTreeLeaf  //Construct node of tree end
 
-	def takeTraining  //Default the last attribute in training list/set is classification attribute
+  11. def takeTraining  //Default the last attribute in training list/set is classification attribute
 
-	def printDecisionTree  //Print the decision tree
+  12. def printDecisionTree  //Print the decision tree
 
-	def printNextLevelDecisionTree  //Visit each node in same level with tree end condition
+  13. def printNextLevelDecisionTree  //Visit each node in same level with tree end condition
 
 
 ## Process
