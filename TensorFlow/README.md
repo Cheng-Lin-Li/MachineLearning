@@ -18,5 +18,7 @@ The text file include 750 data records.  360 are from the first quarter of the y
 ## Reference 
   1. Google TensorFlow, MNIST For ML Beginners, https://www.tensorflow.org/get_started/mnist/beginners
   2. Google TensorFlow, Deep MNIST for Experts, https://www.tensorflow.org/get_started/mnist/pros
-  3. Donahue, J., Hendricks, L.A., Guadarrama, S., Rohrbach, M., Venugopalan, S., Darrell, T. And Saenko, K. 2015. Long-term recurrent convolutional networks for visual recognition and description. In 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 7-12 June 2015, Anonymous IEEE, Piscataway, NJ, USA, 2625-34.
-  4. Brown, M.S., Pelosi, M.J. AND Dirska, H. 2013. Dynamic-radius Species-conserving Genetic Algorithm for the Financial Forecasting of Dow Jones Index Stocks. In 9th International Conference, MLDM 2013, 19-25 July 2013, Anonymous Springer Verlag, Berlin, Germany, 27-41.
+  3. Donahue, J., Hendricks, L.A., Guadarrama, S., Rohrbach, M., Venugopalan, S., Darrell, T. And Saenko, K. 2015. Long-term recurrent convolutional networks for visual recognition and description. In 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 7-12 June 2015, Anonymous IEEE, Piscataway, NJ, USA, 2625-34., https://arxiv.org/abs/1411.4389v3
+  4. Brown, M.S., Pelosi, M.J. AND Dirska, H. 2013. Dynamic-radius Species-conserving Genetic Algorithm for the Financial Forecasting of Dow Jones Index Stocks. In 9th International Conference, MLDM 2013, 19-25 July 2013, Anonymous Springer Verlag, Berlin, Germany, 27-41., https://link.springer.com/chapter/10.1007/978-3-642-39712-7_3
+  5. colah's blog, Understanding LSTM Networks, http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+  6. Deep Learning for Java, A Beginner’s Guide to Recurrent Networks and LSTMs, https://deeplearning4j.org/lstm.html
