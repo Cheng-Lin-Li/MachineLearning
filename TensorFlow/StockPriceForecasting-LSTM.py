@@ -2,12 +2,15 @@
 Project Name: Multi-Layer Perceptron (MLP), and Long-Short Term Memory (LSTMs) for stock price forecasting 
 
 This is a sample program to demonstrate the implementation that leverage Tensorflow to construct a LSTMs for stock price forecasting.
+
 Environments:
     1. Tensorflow version 1.1
     2. Python version 3.6
+
 Warning:
     1. The program just converted from TensorFlow r0.12 to r1.1. Potential defects may exist.
     2. The program output need to be reviewed again. This is only a reference code for you to deal with your own data and apply to your own application.
+
 @author:    Cheng-Lin Li a.k.a. Clark
 
 @copyright:  2017 Cheng-Lin Li@University of Southern California. All rights reserved.
