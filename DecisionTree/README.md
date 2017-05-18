@@ -69,11 +69,11 @@ occupied, prices, music
 
 	TESTING_SET = [{'attr_name':'attribute1', 'data':['type1, type1, type2...']}, {}, ..., {}]  //Store the testing data
 
-	branchset = {{'branch_name1':{'classification_type1': counter... 'classification_typeN': counter}, 'branch_name2':{...}}}  //Store the branches of each node
+	branchset = { {'branch_name1': {'classification_type1': counter... 'classification_typeN': counter}, 'branch_name2': {...} } }  //Store the branches of each node
 
-	child_tree = {{'branch_name1':DecisionTree1, 'branch_name2':DecisionTree2 ...}}  //Store the child trees of each node
+	child_tree = {'branch_name1':DecisionTree1, 'branch_name2':DecisionTree2 ...}  //Store the child trees of each node
 
-	branch_total_count = {{'branch_name1':total_count_of_record,..., 'branch_nameN': total_count_of_record}}  //Store the number of cases in each branch of the node
+	branch_total_count = {'branch_name1':total_count_of_record,..., 'branch_nameN': total_count_of_record}  //Store the number of cases in each branch of the node
 
 
 ## Main Methods
