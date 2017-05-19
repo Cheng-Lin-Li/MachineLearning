@@ -144,7 +144,7 @@ def setOutputData(filename='', result_dict=dict()):
         
 class priority_queue(object):
     # This is a priority queue implementation which introduce from Python official website. 
-    # https://docs.python.org/2.7/library/heapq.html
+    # https://docs.python.org/3.6/library/heapq.html
     def __init__(self):    
         self.pq = []                         # list of entries arranged in a heap
         self.entry_finder = {}               # mapping of tasks to entries

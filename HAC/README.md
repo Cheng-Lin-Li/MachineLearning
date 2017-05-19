@@ -78,7 +78,7 @@ The order doesn’t matter
 
 ## Process
 
-  1. The implementation use heap-based priority queue to store pairwise distances of clusters. Python heapq module (https://docs.python.org/2/library/heapq.html) was included to implement the heap. 
+  1. The implementation use heap-based priority queue to store pairwise distances of clusters. Python heapq module (https://docs.python.org/3.6/library/heapq.html) was included to implement the heap. 
 
   2. The implementation uses delayed deletion for the removal of nodes that involve the clusters which have been merged to improve efficiency.
     
