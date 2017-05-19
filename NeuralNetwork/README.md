@@ -1,6 +1,6 @@
 ## This is an implementation of Neural Network Algorithm in Python 3
 
-## Machine Learning Algorithm: Neural Network Algorithm.
+## Machine Learning Algorithm: Neural Network Algorithm
 
 ## Implementation features:
 The neural network support multiple layers with multiple dimensions input and one dimension output.
@@ -15,7 +15,7 @@ The label of an image is 1 if the word "down" is in its file name; otherwise the
 The image file format is "pgm" <http://netpbm.sourceforge.net/doc/pgm.html>. You may follow the link for the format details. 
 
 
-##Objectives
+## Objectives:
 Implement the Back Propagation algorithm for Feed Forward Neural Networks to learn down gestures from training images available in downgesture_train.list. After the training, use the trained network to predict the labels for the gestures in the test images available in downgesture_test.list.
 
 The result should print out whether the prediction is correct for “down” gesture, the prediction result and the accuracy of prediction.
