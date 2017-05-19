@@ -1,18 +1,46 @@
-## This is an implementation of  (HAC) in Python 3.
+## This is an implementation of Hierarchical Agglomerative Clustering (HAC) algorithm in Python 3.
 
 
 ## The task:
-Use PCA to reduce the dimensionality of the data points in pca-data.txt from 3D to 2D. Each line of the data file represents the 3D coordinates of a single point. 
+This task implements document clustering algorithm by hierarchical (agglomerative/bottom-up) clustering HAC in Python 3.
 
-Program will output the directions of the first two principal components.
+#### Usage: python HAC.py docword.enron_s.txt k
+The program takes 2 arguments:
+  1. docword.txt is a document-word file. The format will be listed in the input section.
+  2. k is the desired number of clusters.
 
+#### Input: docword.enron_s.txt
+The data file is a Bag-of-words dataset (https://archive.ics.uci.edu/ml/datasets/Bag+of+Words) at UCI Machine Learning Repository to test the algorithms.
+The data set contain five collections of documents. Documents have been pre-processed and each collection consists of two files: vocabulary file and document-word file. This implementation will only use documentword file.
 
-#### Usage: python PCA.py
+For example, “vocab.enron.txt” is the vocabulary file for the Enron email collection which contains a list of words, e.g., “aaa”, “aaas”, etc. “docword.enron_s.txt” is the document-word file, which has the following format:
 
+39861
 
-#### Input: pca-data.txt
-The data file that contains the relevant records.
-The file name and target dimensions were coded at main section in program but you can easily replace the code by your own to read the input file from parameters.
+28102
+
+3710420
+
+1 118 1
+
+1 285 1
+
+1 1229 1
+
+1 1688 1
+
+1 2068 1
+
+...
+The first line is the number of documents in the collection (39861). 
+
+The second line is the number of words in the vocabulary (28102).
+
+Note that the vocabulary only contains the words that appear in at least 10 documents.
+The third line (3710420) is the number of works that appear in at least one document.
+
+Starting from the fourth line, the content is <document id> <word id> <tf>. 
+For example, document #1 has word #118 (i.e., the line number in the vocabulary file) that occurs once.
 
 #### Output: Sorted K eigenvector and the results that reduces to k dimensions
 

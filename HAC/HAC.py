@@ -92,7 +92,7 @@ def set_std_out_2_file(filename):
     try:
         ORIG_STDOUT = sys.stdout        
         if filename != None :
-            f = file(filename, 'w')
+            f = open(filename, 'w')
             sys.stdout = f
         else:
             pass    
@@ -120,7 +120,7 @@ def setOutputData(filename='', result_dict=dict()):
     try:
         if filename != None :
             orig_stdout = sys.stdout
-            f = file(filename, 'w')
+            f = open(filename, 'w')
             sys.stdout = f
         else:
             pass
