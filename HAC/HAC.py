@@ -59,31 +59,31 @@ OUTPUT_FILE = None # OUTPUT_FILE COULD BE 'OUTPUT_FILE = None' for console or fi
 
 def getInputData(filename):
 # Get data from input file. 
-    _row = list()
-    _col = list()
-    _data = list()
-    _no_docs = 0
-    _counter = 0
+    row = list()
+    col = list()
+    data = list()
+    no_docs = 0
+    counter = 0
     
     try:
         with open(filename, 'r') as _fp:
             for _each_line in _fp:
-                if _counter >= 3: #skip file header
+                if counter >= 3: #skip file header
                     _r = _each_line.strip().split(SPLITTER)
-                    _row.append(int(_r[0])-DATA_INDEX_FROM)
-                    _col.append (int(_r[1])-DATA_INDEX_FROM)
-                    _data.append(float(_r[2])) #(data=tf, indices=document id, indptr=word id)
-                elif _counter == 0:
-                    _no_docs = int (_each_line)
-                    _counter += 1
+                    row.append(int(_r[0])-DATA_INDEX_FROM)
+                    col.append (int(_r[1])-DATA_INDEX_FROM)
+                    data.append(float(_r[2])) #(data=tf, indices=document id, indptr=word id)
+                elif counter == 0:
+                    no_docs = int (_each_line)
+                    counter += 1
                 else:
-                    _counter += 1
+                    counter += 1
         _fp.close()
-        if DEBUG: print ('getInputData.=>no. of documents=%d'%(_no_docs))
-        if DEBUG: print ('getInputData. row = : %s'%(_row))
-        if DEBUG: print ('getInputData. col = : %s'%(_col))
-        if DEBUG: print ('getInputData. data = : %s'%(_data))
-        return _no_docs, _row, _col, _data
+        if DEBUG: print ('getInputData.=>no. of documents=%d'%(no_docs))
+        if DEBUG: print ('getInputData. row = : %s'%(row))
+        if DEBUG: print ('getInputData. col = : %s'%(col))
+        if DEBUG: print ('getInputData. data = : %s'%(data))
+        return no_docs, row, col, data
     except IOError as _err:
         print ('File error: ' + str (_err))
         exit()
@@ -224,60 +224,60 @@ class HAC(object):
 #           Key: a tuple for cluster member nodes. (0, 5, 7, 10,...)
 #           Value: a tuple to store (centroid vector, sum of vector, total number of cluster members. )
                 
-        _result = dict()
-        _pq = priority_queue()
-        _task = None
-        _centroid = None       
-        _new_cluster = None 
+        result = dict()
+        pq = priority_queue()
+        task = None
+        centroid = None       
+        new_cluster = None 
         # Initial clusters for each individual document
         for _i in range(self.no_docs):
-            _result[tuple([_i])] = [data_matrix.getrow(_i), 1, data_matrix.getrow(_i)] # store [vector, total no. of document, sum of vectors]
-        _result = collections.OrderedDict(sorted(_result.items()))
-        if DEBUG > 1: print('HAC.get_clusters=>=>_result=%s'%(str(_result)))
+            result[tuple([_i])] = [data_matrix.getrow(_i), 1, data_matrix.getrow(_i)] # store [vector, total no. of document, sum of vectors]
+        result = collections.OrderedDict(sorted(result.items()))
+        if DEBUG > 1: print('HAC.get_clusters=>=>result=%s'%(str(result)))
         
         # for K clusters
-        while len(_result) > k:
-            if DEBUG: print('HAC.get_clusters=>number of clusters = len(_result) = %d'%(len(_result))) 
-            _key_list = _result.keys() #Get all keys/nodes/clusters from _result dictionary
-            self.set_new_clusters(_result, _pq, _new_cluster, _centroid)
+        while len(result) > k:
+            if DEBUG: print('HAC.get_clusters=>number of clusters = len(result) = %d'%(len(result))) 
+            _key_list = result.keys() #Get all keys/nodes/clusters from _result dictionary
+            self.set_new_clusters(result, pq, new_cluster, centroid)
             if DEBUG: print('HAC.get_clusters=>Before _pq.pop_task()')                    
-            _task = _pq.pop_task()
-            if DEBUG: print('HAC.get_clusters=>get new cluster pairs =>_task=%s'%(str(_task)))
-            _v0 = tuple(_task[0]) 
-            _v1 = tuple(_task[1])
-            _total_documents = _result[_v0][1]+_result[_v1][1]            
-            _sum_vectors = _result[_v0][2] + _result[_v1][2]
-            _centroid = _sum_vectors/_total_documents # v0 + v1 / total documents
+            task = pq.pop_task()
+            if DEBUG: print('HAC.get_clusters=>get new cluster pairs =>task=%s'%(str(task)))
+            _v0 = tuple(task[0]) 
+            _v1 = tuple(task[1])
+            _total_documents = result[_v0][1]+result[_v1][1]            
+            _sum_vectors = result[_v0][2] + result[_v1][2]
+            centroid = _sum_vectors/_total_documents # v0 + v1 / total documents
 
             if DEBUG>1: print('_v0= %s,'%(str(_v0)))    
-            if DEBUG>1: print('_v0 sum vectors= %s,'%(str(_result[_v0][2])))
+            if DEBUG>1: print('_v0 sum vectors= %s,'%(str(result[_v0][2])))
             if DEBUG>1: print('_v1= %s,'%(str(_v1)))
-            if DEBUG>1: print('_v1 sum vectors= %s,'%(str(_result[_v1][2])))
+            if DEBUG>1: print('_v1 sum vectors= %s,'%(str(result[_v1][2])))
             if DEBUG>1: print('v0+v1=_sum_vectors= %s,'%(str(_sum_vectors)))       
             if DEBUG>1: print('_total_documents= %s,'%(str(_total_documents)))                                       
-            if DEBUG>1: print('_centroid= %s, _total_documents=%d'%(_centroid, _total_documents))
+            if DEBUG>1: print('_centroid= %s, _total_documents=%d'%(centroid, _total_documents))
             # Remove old documents from result clusters.
-            self.get_removed_clusters(_result, _pq, _v0)
-            self.get_removed_clusters(_result, _pq, _v1)
+            self.get_removed_clusters(result, pq, _v0)
+            self.get_removed_clusters(result, pq, _v1)
             
             # Add new cluster into result clusters.
-            _result[tuple(sorted(itertools.chain.from_iterable((_task[0], _task[1]))))]=[_centroid, _total_documents, _sum_vectors] 
-            _new_cluster = tuple(sorted(itertools.chain.from_iterable((_task[0], _task[1]))))
-            if DEBUG: print('HAC.get_clusters=>_new_cluster=%s'%(str(_new_cluster)))
+            result[tuple(sorted(itertools.chain.from_iterable((task[0], task[1]))))]=[centroid, _total_documents, _sum_vectors] 
+            new_cluster = tuple(sorted(itertools.chain.from_iterable((task[0], task[1]))))
+            if DEBUG: print('HAC.get_clusters=>_new_cluster=%s'%(str(new_cluster)))
             if DEBUG > 1:
-                for key in _result:
+                for key in result:
                     print (','.join(map(lambda x: str(x), key)))
-        return _result
+        return result
     
     def set_new_clusters(self, clusters, priority_queue, new_cluster, centroid ):
         # Calculate new distances between the centroid of new cluster and rest of nodes/documents.   
-        _key_list = list(clusters.keys()) #Get all keys/nodes/clusters from _result dictionary
-        if len(_key_list) == self.no_docs: # If it is first time to build up clusters                                           
-            for _i in range(len(_key_list)): # bottom up clustering                   
-                for _j in range(_i+1, len(_key_list)):
-                    _v0 = clusters[_key_list[_i]][0]
-                    _v1 = clusters[_key_list[_j]][0]
-                    _t = tuple((_key_list[_i], _key_list[_j]))
+        key_list = list(clusters.keys()) #Get all keys/nodes/clusters from _result dictionary
+        if len(key_list) == self.no_docs: # If it is first time to build up clusters                                           
+            for _i in range(len(key_list)): # bottom up clustering                   
+                for _j in range(_i+1, len(key_list)):
+                    _v0 = clusters[key_list[_i]][0]
+                    _v1 = clusters[key_list[_j]][0]
+                    _t = tuple((key_list[_i], key_list[_j]))
                     if DEBUG>1: print('HAC.set_new_clusters=> new cluster =%s'%(str(_t)))
                     _d = self.get_distance(_v0, _v1, self.distance_function)
                     priority_queue.add_task(_t, -1*_d)
@@ -324,19 +324,18 @@ class HAC(object):
         return distance_function(vector1, vector2)
     
     def cosine_similarity(self, vector1, vector2):
-        _v1_sqrt = vector1.power(2)
-        _v2_sqrt = vector2.power(2)
-        _v1 = vector1.todense()
-        _v2 = vector2.todense()
-        if DEBUG > 0: print('HAC.cosine=>v1 centroid=%s, v2 centroid=%s, cosine()=%s'%(str(vector1), str(vector2), _v1.dot(_v2.transpose())/(np.sqrt(_v1_sqrt.sum())*np.sqrt(_v2_sqrt.sum())))) 
-        return (_v1.dot(_v2.transpose())/(np.sqrt(_v1_sqrt.sum())*np.sqrt(_v2_sqrt.sum())))
+        v1_sqrt = vector1.power(2)
+        v2_sqrt = vector2.power(2)
+        v1 = vector1.todense()
+        v2 = vector2.todense()
+        if DEBUG > 0: print('HAC.cosine=>v1 centroid=%s, v2 centroid=%s, cosine()=%s'%(str(vector1), str(vector2), v1.dot(v2.transpose())/(np.sqrt(v1_sqrt.sum())*np.sqrt(v2_sqrt.sum())))) 
+        return (v1.dot(v2.transpose())/(np.sqrt(v1_sqrt.sum())*np.sqrt(v2_sqrt.sum())))
     
     def get_unit_vector(self, document_matrix, unit_vector):
         return unit_vector(document_matrix)
             
     def tf_idf(self, data_csc_matrix):
-        _tf_idf = list()
-        _pre_ipt = 0
+
         if DEBUG: print('tf_idf=> input data_vectors=%s'%(data_csc_matrix.todense()))
         data_csc_matrix.eliminate_zeros() #Remove zeros from the matrix
         df_array = data_csc_matrix.getnnz(axis=0)    # Number of stored values, including explicit zeros.
