@@ -74,11 +74,7 @@ The order doesn’t matter
 ## Data Structure
   1. Since the number of words in the vocabulary may be very big, The implementation uses csc_matrix to store and operate unit vectors.
   
-  2. Reference of csc matrix as below:
-  
-    a. https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html#scipy.spars e.csc_matrix
-
-
+  2. Reference of csc matrix on https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html#scipy.spars e.csc_matrix
 
 ## Process
 
