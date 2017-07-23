@@ -12,8 +12,9 @@ The text file include 750 data records.  360 are from the first quarter of the y
 ### Output: Iterations and training / testing data results of selected stock index prediction.
 
 ### Warning:
-    1. The program just converted from TensorFlow r0.12 to r1.1. Potential defects may exist.
-    2. The program output need to be reviewed again. This is only a reference code for you to deal with your own data and apply to your own application.
+
+1. The program just converted from TensorFlow r0.12 to r1.1. Potential defects may exist.
+2. The program output need to be reviewed again. This is only a reference code for you to deal with your own data and apply to your own application.
 
 ## Reference 
   1. Google TensorFlow, MNIST For ML Beginners, https://www.tensorflow.org/get_started/mnist/beginners
