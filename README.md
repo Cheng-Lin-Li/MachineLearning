@@ -1,3 +1,4 @@
+
 # Machine Learning
 Implementations of machine learning algorithm by Python 3
 
@@ -23,9 +24,12 @@ Thanks,
 
 
 ## Reference:
-
+* Machine Learning Course CS229 at Stanford: https://see.stanford.edu/Course/CS229
+* Machine Learning Foundations at NTU: https://www.youtube.com/watch?v=nQvpFSMPhr0&list=PLXVfgk9fNX2I7tB6oIINGBmW50rrmFTqf
+* Machine Learning Techniques at NTU: https://www.youtube.com/watch?v=A-GxGCCAIrg&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2
 * Hidden Markov model (HMM): https://en.wikipedia.org/wiki/Hidden_Markov_model
 * Viterbi Algorithm: http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf
+* LSTM: http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
 Cheng-Lin Li@University of Southern California
 chenglil@usc.edu or 
