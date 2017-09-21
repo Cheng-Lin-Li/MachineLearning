@@ -25,7 +25,7 @@ Thanks,
 ## Reference:
 
 * Hidden Markov model (HMM): https://en.wikipedia.org/wiki/Hidden_Markov_model
-* [Viterbi Algorithm](http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf): http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf
+* Viterbi Algorithm: http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf
 
 Cheng-Lin Li@University of Southern California
 chenglil@usc.edu or 
