@@ -11,6 +11,9 @@ The text file include 750 data records.  360 are from the first quarter of the y
 
 ### Output: Iterations and training / testing data results of selected stock index prediction.
 
+
+### Report: Click [**Here**](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/TensorFlow/ProjectReport.pdf) to read the report. 
+
 ### Warning:
 
 1. The program just converted from TensorFlow r0.12 to r1.1. Potential defects may exist.
