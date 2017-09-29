@@ -6,6 +6,9 @@ Use PCA to reduce the dimensionality of the data points in pca-data.txt from 3D 
 
 Program will output the directions of the first two principal components.
 
+## Technical Specification and Report
+
+Click **[Here](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/PCA/INF552-TechnicalSpecification-PCA_FastMap-%5B1.0%5D-%5B20161011%5D.pdf])** to read the detail specification and report.
 
 #### Usage: python PCA.py
 
@@ -15,10 +18,6 @@ The data file that contains the relevant records.
 The file name and target dimensions were coded at main section in program but you can easily replace the code by your own to read the input file from parameters.
 
 #### Output: Sorted K eigenvector and the results that reduces to k dimensions
-
-## Technical Specification and Report
-
-Click **[Here](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/PCA/INF552-TechnicalSpecification-PCA_FastMap-[1.0]-[20161011].pdf])** to read the detail specification and report.
 
 ## Data Structure
   1.	All data points store in an array.

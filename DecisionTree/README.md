@@ -21,6 +21,10 @@ Assume that you have kept a record of your previous night-outs with the followin
 	
 	• Whether you enjoyed {Yes, No}
 
+## Technical Specification and Report
+
+Click **[Here](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/DecisionTree/TechnicalSpecification-%5BDecisionTree%5D-%5B1.1%5D-%5B20160929%5D.pdf)** to read the detail specification and report.
+
 #### Usage: python DecisionTree.py dt-data.txt	
 
 #### Input: A data file (dt-data.txt) that contains the relevant records.
