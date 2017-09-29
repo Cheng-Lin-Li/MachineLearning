@@ -3,8 +3,8 @@
 ## Project:
 The one of the most challenging issue is stock price or indices prediction in the financial industry. On the other hand, machine learning and big data techniques in vision recognition has matured considerably over the last decade. This research adopts Multi-Layer Perceptron (MLP) and Long-Short Term Memory (LSTMs) neural networks to compete with Dynamic-radius Species-conserving Genetic Algorithm (DSGA) for short term stock price prediction. The result indicates that MLP may have a better potential than DSGA on short term stock price prediction and that LSTMs may require more training data to surpass DSGA. 
 
-## Technical Specification and Report
- Click [**Here**](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/TensorFlow/ProjectReport.pdf) to read the report. 
+## The Project Report
+ Click [** Here **](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/TensorFlow/ProjectReport.pdf) to read the report. 
 
 ### Usage: python StockPriceForecasting.py (or StockPriceForecasting-LSTM.py)	
 

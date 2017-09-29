@@ -11,7 +11,7 @@ The objects listed in fastmap-data.txt are actually the words in fastmap-wordlis
 
 ## Technical Specification and Report
 
-Click ** [Here](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/FastMap/TechnicalSpecification-%5BPCA_FastMap%5D-%5B1.0%5D-%5B20160929%5D.pdf) ** to read the detail specification and report.
+Click [** Here **](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/FastMap/TechnicalSpecification-%5BPCA_FastMap%5D-%5B1.0%5D-%5B20160929%5D.pdf) to read the detail specification and report.
 
 
 #### Usage: python FastMap.py
