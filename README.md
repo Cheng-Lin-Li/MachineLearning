@@ -11,7 +11,7 @@ Thanks,
 
 |Algorithm|Description|Link|
 |------|------|--------|
-|Decision Tree|By calculating the entropy of previous observations, decision tree algorithm may help us to predict the decision or results|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/DecisionTree)|
+|Decision Tree|By measuring information gain via calculating the entropy of previous observations, decision tree algorithm may help us to predict the decision or results|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/DecisionTree)|
 |Fast Map|An approach for dimensions reductions|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/FastMap)|
 |Gaussian Mixture Models (GMMs)|GMMs are among the most statistically mature methods for data clustering (and density estimation)|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/GMM)|
 |Hierarchical clustering (HAC)|HCA seeks to build a hierarchy of clusters from bottom up or top down. This is a bottom up implementation.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/HAC)|
