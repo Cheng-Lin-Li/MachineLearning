@@ -9,6 +9,11 @@ The first two columns in each line of the data file represent the IDs of the two
 
 The objects listed in fastmap-data.txt are actually the words in fastmap-wordlist.txt (nth word in this list has an ID value of n) and the distances between each pair of objects are the Damerau–Levenshtein distances between them. The program will plot the words onto a 2D plane using the previous FastMap solution and see what it looks like.
 
+## Technical Specification and Report
+
+Click ** [Here](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/FastMap/TechnicalSpecification-%5BPCA_FastMap%5D-%5B1.0%5D-%5B20160929%5D.pdf) ** to read the detail specification and report.
+
+
 #### Usage: python FastMap.py
 
 

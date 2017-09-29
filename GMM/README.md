@@ -9,6 +9,10 @@ I based on his implementation with modifications as this result.
 Run the algorithm on the data file "clusters.txt" using K, the number of clusters, set to 3. 
 Report the mean (centroids), amplitude and covariance matrix of each Gaussian in GMM
 
+## Technical Specification and Report
+
+Click [** Here **](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/GMM/INF552-TechnicalSpecification-%5Bk-means_EM-GMM%5D-%5B1.2%5D-%5B20170515%5D.pdf) to read the detail specification and report.
+
 #### Usage: python GMM.py	
 
 #### Input: A data file (clusters.txt) that contains 150 2D points. Each row in the file contains the coordinates of a single point.

@@ -14,6 +14,9 @@ The label of an image is 1 if the word "down" is in its file name; otherwise the
 
 The image file format is "pgm" <http://netpbm.sourceforge.net/doc/pgm.html>. You may follow the link for the format details. 
 
+## Technical Specification and Report
+
+Click [** Here **](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/NeuralNetwork/INF552-TechnicalSpecification-%5BNeuralNetwork%5D-%5B1.0%5D-%5B20161104%5D.pdf) to read the detail specification and report.
 
 ## Objectives:
 Implement the Back Propagation algorithm for Feed Forward Neural Networks to learn down gestures from training images available in downgesture_train.list. After the training, use the trained network to predict the labels for the gestures in the test images available in downgesture_test.list.

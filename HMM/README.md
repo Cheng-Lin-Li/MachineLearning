@@ -8,6 +8,10 @@ The file hmm-data.txt contains a map of a 10-by-10 2D grid-world. The most up-le
 
 At a given cell, the robot measures L2 distances (Euclidean distances) to each of the towers. For a true distance d, the robot records a noisy measurement chosen uniformly at random from the set of numbers in the interval [0.7d, 1.3d] with one decimal place. These measurements for 11 time-steps are also provided in the data file. You should output the coordinates of the most likely trajectory of the robot for 11 time-steps. The Viterbi algorithm is the implemented algorithm for this task. For tie breaking, it always prefer the one with a smaller x coordinate, and a smaller y coordinate if the x coordinates are equal.
 
+## Technical Specification and Report
+
+Click [** Here **](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/HMM/INF552-TechnicalSpecification-%5BHMM%5D-%5B1.0%5D-%5B20161203%5D.pdf) to read the detail specification and report.
+
 
 #### Usage: python DecisionTree.py dt-data.txt	
 
