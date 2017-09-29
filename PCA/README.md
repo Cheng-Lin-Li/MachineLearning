@@ -18,7 +18,7 @@ The file name and target dimensions were coded at main section in program but yo
 
 ## Technical Specification and Report
 
-Click **(Here)[https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/PCA/INF552-TechnicalSpecification-PCA_FastMap-[1.0]-[20161011].pdf]** to read the detail specification and report.
+Click **[Here](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/PCA/INF552-TechnicalSpecification-PCA_FastMap-[1.0]-[20161011].pdf])** to read the detail specification and report.
 
 ## Data Structure
   1.	All data points store in an array.
