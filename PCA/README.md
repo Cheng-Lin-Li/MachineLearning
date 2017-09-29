@@ -8,7 +8,7 @@ Program will output the directions of the first two principal components.
 
 ## Technical Specification and Report
 
-Click ** (Here)[https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/PCA/INF552-TechnicalSpecification-PCA_FastMap-%5B1.0%5D-%5B20161011%5D.pdf] ** to read the detail specification and report.
+Click ** [Here](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/PCA/INF552-TechnicalSpecification-PCA_FastMap-%5B1.0%5D-%5B20161011%5D.pdf) ** to read the detail specification and report.
 
 #### Usage: python PCA.py
 
