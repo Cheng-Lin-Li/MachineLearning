@@ -27,7 +27,7 @@ Thanks,
 
 
 
-## Reference:
+## Reference
 * Machine Learning at Coursera: https://www.coursera.org/learn/machine-learning/
 * Machine Learning Course CS229 at Stanford: https://see.stanford.edu/Course/CS229
 * Machine Learning Foundations at NTU: https://www.youtube.com/watch?v=nQvpFSMPhr0&list=PLXVfgk9fNX2I7tB6oIINGBmW50rrmFTqf
