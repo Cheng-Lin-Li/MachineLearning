@@ -41,7 +41,7 @@ TESTING_SET = 'downgesture_test.list'
 DEFAULT_ACTIVATION = 'logistic' # Or 'tanh' for tanH as activation function.
 LEARNING_RATE = 0.1 # Default learning rate
 ITERATION = 5000
-HIDDEN_LAYER_SIZES = [100, 10] #Hidden layer structure. The definition of [100, 10] is for multiple hidden layers, first layer with 100 neurals, and second hidden layer with 10 neurals,  
+HIDDEN_LAYER_SIZES = [100, 100, 50] #Hidden layer structure. The definition of [100, 100, 50] is for multiple hidden layers, first layer with 100 neurals, and second hidden layer with 100 neurals, than 50 in third layer,  
 LOWER_BOUND_INIT_WEIGHT = 0 #Lower bound of weight for each connection.
 UPPER_BOUND_INIT_WEIGHT = 1 #Upper bound of weight for each connection.
 BINARY_CLASSIFICATION = True #The output will be either 0 or 1 if it is True or present the actual output value if it set to False.
@@ -160,28 +160,28 @@ class NeuralNetwork(object):
         # self.weights = weights array = [[Weights of level-01], [Weights of level-12], ..., [Weights of level-(L-1)(L)]]. 
         # For [Weights of level-01]=[[w01, w02, ..., w0d], [w11, w12, ..., w1d], ... [wd1, wd2, ..., wdd]]
         
-        _weights = []
-        _scale = 0 # optimal scale of weight is m**(-1/2)
+        weights = []
+        scale = 0 # optimal scale of weight is m**(-1/2)
         for l in range(1, len(network_layer_sizes)):
-                _scale = (network_layer_sizes[l-1])**(-1/2)
-                _weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))                   
-#                _weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(scale=_scale, size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))   
+                scale = (network_layer_sizes[l-1])**(-1/2)
+                weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))                   
+#                weights.append(((self.weight_high)-(self.weight_low))*np.random.normal(scale=scale, size=(network_layer_sizes[l-1], network_layer_sizes[l]))+(self.weight_low))   
                 np.random.random
-        self.weights = _weights
+        self.weights = weights
         return self.weights
 
     def set_layer_sizes(self, training_data, training_data_label):
         #Construct the whole neural network structure, include [input layer sizes, hidden layer 1 sizes, ...hidden layer L sizes, output layer sizes]
-        _dim = 0
-        _network_layer_sizes = []
-        _dim = training_data.ndim;
-        if _dim != 0:
+        dim = 0
+        network_layer_sizes = []
+        dim = training_data.ndim;
+        if dim != 0:
             self.input_numbers, self.input_dimensions = training_data.shape
         else:
             pass
-        _dim = training_data_label.ndim;
-        if _dim !=0:
-            if _dim == 1:
+        dim = training_data_label.ndim;
+        if dim !=0:
+            if dim == 1:
                 self.output_numbers = training_data_label.shape[0]
                 self.output_dimensions = 1;
             else:
@@ -189,83 +189,82 @@ class NeuralNetwork(object):
         else:
             pass
         
-        _network_layer_sizes.append(self.input_dimensions+1) # add X0
+        network_layer_sizes.append(self.input_dimensions+1) # add X0
         
         for i in self.hidden_layer_sizes:
-            _network_layer_sizes.append(i)
+            network_layer_sizes.append(i)
         
-        _network_layer_sizes.append(self.output_dimensions) 
-        self.network_layer_sizes = np.array(_network_layer_sizes)
+        network_layer_sizes.append(self.output_dimensions) 
+        self.network_layer_sizes = np.array(network_layer_sizes)
 
         return self.network_layer_sizes
     
     def feed_forward(self, input_data):
-        _X = [np.concatenate((np.ones(1).T, np.array(input_data)), axis=0)] #add bias unit [array([])]
-        _network_layer_sizes = self.network_layer_sizes
-        _W = self.weights
-        _wijxi = []
-        _xj = []
+        X = [np.concatenate((np.ones(1).T, np.array(input_data)), axis=0)] #add bias unit [array([])]
+        W = self.weights
+        wijxi = []
+        xj = []
         
-        for l in range(0, len(_W)):
-            _wijxi = np.dot(_X[l], _W[l])
-            _xj = self.activation(_wijxi)
+        for l in range(0, len(W)):
+            wijxi = np.dot(X[l], W[l])
+            xj = self.activation(wijxi)
             # Setup bias term for each hidden layer, x0=1
-            if l < len(_W)-1:
-                _xj[0] = 1 
-            _X.append(_xj)  
+            if l < len(W)-1:
+                xj[0] = 1 
+            X.append(xj)  
             
-        self.X = _X
-        return _X[-1] #return the feed forward result of final level.         
+        self.X = X
+        return X[-1] #return the feed forward result of final level.         
     
     def back_propagate(self, output, label_data):
         X = self.X
         W = list(self.weights) #self.weights=<class list>[array([ndarray[100],ndarray[100],...X961]), array(ndarray[1],ndarray[1],...X100)]
         avg_err = []
         Delta = []
-        _x = []
-        _d = []
-        _w = []
-        _y = []
+        x = []
+        d = []
+        w = []
+        y = []
         
-        _y = np.atleast_2d(label_data)   
-        _x = np.atleast_2d(output)
+        y = np.atleast_2d(label_data)   
+        x = np.atleast_2d(output)
         # Base level L delta calculation.
-        avg_err = np.average(_x - _y)
-        Delta = [self.error_term_derivation(_x, _y) * self.activation_derivation(_x)] # Delta = error term derivation * activation function derivation
+        avg_err = np.average(x - y)
+        Delta = [self.error_term_derivation(x, y) * self.activation_derivation(x)] # Delta = error term derivation * activation function derivation
         # #<class list>[array([])]
         
         # Calculate all deltas and adjust weights
         for l in range(len(X)-2, 0, -1):
-            _d = np.atleast_2d(Delta[-1])
-            _x = np.atleast_2d(X[l])
-            _w = np.array(W[l])
+            d = np.atleast_2d(Delta[-1])
+            x = np.atleast_2d(X[l])
+            w = np.array(W[l])
 
-            Delta.append( self.activation_derivation(_x) * Delta[-1].dot(_w.T) )    
-            W[l] -= self.learning_rate * _x.T.dot(_d)
+            Delta.append( self.activation_derivation(x) * Delta[-1].dot(w.T) )    
+            W[l] -= self.learning_rate * x.T.dot(d)
 
         #Calculate the weight of input layer and update weight array
-        _x = np.atleast_2d(X[l-1])
-        _d = np.atleast_2d(Delta[-1])            
-        W[l-1] -= self.learning_rate * _x.T.dot(_d)        
+        x = np.atleast_2d(X[l-1])
+        d = np.atleast_2d(Delta[-1])            
+        W[l-1] -= self.learning_rate * x.T.dot(d)        
         
         self.weights = W
         return avg_err
     
     def predict(self, x):
-        _r = []
-        _r = self.feed_forward(x[0])
-        _enable_binary_classification = self.enable_binary_classification
+        r = []
+        r = self.feed_forward(x[0])
+        enable_binary_classification = self.enable_binary_classification
         
         # Enable the binary classification on predict results.
-        if _enable_binary_classification and self.activation == self.logistic:
-            for i in range(len(_r)):
-                if _r[i] >= THRESHOLD:
-                    _r[i] = 1
+        if enable_binary_classification and self.activation == self.logistic:
+            for i in range(len(r)):
+                if r[i] >= THRESHOLD:
+                    r[i] = 1
                 else:
-                    _r[i] = 0
+                    r[i] = 0
         else:
             pass
-        return _r
+        return r
     
     def execute(self, training_data, training_data_label):
         '''
@@ -328,8 +327,8 @@ if __name__ == '__main__':
     nn.execute(images, labels)
     total = 0
     correct = 0
-    _dim = np.array(labels).ndim;
-    if _dim == 1:
+    dim = np.array(labels).ndim;
+    if dim == 1:
         threshold_array = np.array(THRESHOLD)
     else:
         threshold_array = np.array(THRESHOLD)*np.array(labels).shape[1]
