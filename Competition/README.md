@@ -6,16 +6,18 @@ The folders included demo programs for leverage scikit-learn, Keras libraries to
 
 |Algorithm|Description|Link|
 |------|------|--------|
-|Support Vector Regression (SVR), Neural Network, Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU) to perform prediction for number of vehicles |This is a demo program to leverage mutile models in one challenge. The final result can be improved by some emsemble techniques like Bootstrap aggregating (bagging), boosting, and stacking to get better performance.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/LinearRegression/sklearn-LinearRegression.py)|
-
+|Support Vector Regression (SVR), Neural Network, Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU) | This task is to perform prediction for number of vehicles by given data. This is a demo program to leverage mutile models from existing libraries in one challenge. The final result can be improved by some emsemble techniques like Bootstrap aggregating (bagging), boosting, and stacking to get better performance.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/LinearRegression/sklearn-LinearRegression.py)|
+|Content Based Filtering and Singular Value decomposition (SVD)  | This task is to perform recommendation to users/customers by given data. This is a demo program to leverage Content Based Recommender and Metadata Based Recommender like collaborative filtering (CF) algorithm in one challenge. The final result can be improved by neural network approach like Long-Short Term Memory (LSTM) and Gated Recurrent Unit (GRU) to get a test.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/LinearRegression/sklearn-LinearRegression.py)|
 
 
 
 ## Reference:
-* Machine learning-CSCI567 by Prof. Fei Sha at University of Southern California, Fall 2017. 
+* [Yehuda Koren, Robert Bell and Chris Volinsky, MATRIX  FACTORIZATION TECHNIQUES FOR RECOMMENDER SYSTEMS , IEEE Aug., 2009, p.42~49](https://datajobs.com/data-science-repo/Recommender-Systems-%5BNetflix%5D.pdf)
+* [Singular Value decomposition (SVD) in recommender systems for Non-math-statistics-programming wizards](https://medium.com/@m_n_malaeb/singular-value-decomposition-svd-in-recommender-systems-for-non-math-statistics-programming-4a622de653e9)
+* Surprise: http://surprise.readthedocs.io/en/stable/index.html. [Github link](https://github.com/NicolasHug/Surprise)
+* Rounak Banik, Movie Recommender Systems, https://www.kaggle.com/rounakbanik/movie-recommender-systems
 * scikit-learn: http://scikit-learn.org/stable/
-* Gaussian Mixture Models - Tutorial Slides by Andrew Moore : http://www.cs.cmu.edu/~./awm/tutorials/gmm.html
-* logistic regression: https://en.wikipedia.org/wiki/Logistic_regression
+
 
 Cheng-Lin Li@University of Southern California
 chenglil@usc.edu or 
