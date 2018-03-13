@@ -24,7 +24,7 @@ Thanks,
 |[Gaussian Mixture Models (GMMs) on scikit-learn](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/scikit-learn)|GMMs are among the most statistically mature methods for data clustering (and density estimation). It assumes each component generates data from a Gaussian distribution. This example shows how to use scikit-learn package.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/KMean_GMM/k-means_EM-GMM.py)|
 |[K-Means on scikit-learn](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/scikit-learn)|One of most famous and easy to understand clustering algorithm. This example shows how to use scikit-learn package.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/KMean_GMM/k-means_EM-GMM.py)|
 |[PLA on scikit-learn](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/scikit-learn)|Perceptron Learning Algorithm. A solver for binary classification task. This example shows how to use scikit-learn package.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/PLA/sklearn-Perceptron.py)|
-
+|Support Vector Regression (SVR), Neural Network, Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU) | This task is to perform prediction for number of vehicles by given data. This is a demo program to leverage mutile models from existing libraries in one challenge. The final result can be improved by some emsemble techniques like Bootstrap aggregating (bagging), boosting, and stacking to get better performance.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/scikit-learn/LinearRegression/sklearn-LinearRegression.py)|
 
 
 ## Reference
