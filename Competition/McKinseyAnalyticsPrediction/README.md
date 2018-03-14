@@ -5,7 +5,7 @@ The folders included demo programs for leverage scikit-learn, Keras libraries to
 
 |Algorithm|Description|Link|
 |------|------|--------|
-|[Support Vector Regression (SVR), Neural Network, Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU)](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/Competition/McKinseyAnalyticsPrediction) | This task is to perform prediction for number of vehicles by given data. This is a demo program to leverage mutile models from existing libraries in one challenge. The final result can be improved by some emsemble techniques like Bootstrap aggregating (bagging), boosting, and stacking to get better performance.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/Competition/McKinseyAnalyticsPrediction)|
+|[Support Vector Regression (SVR), Neural Network, Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU)](https://github.com/Cheng-Lin-Li/MachineLearning/tree/master/Competition/McKinseyAnalyticsPrediction) | This task is to perform prediction for number of vehicles by given data. This is a demo program to leverage mutile models from existing libraries in one challenge. The final result can be improved by some emsemble techniques like Bootstrap aggregating (bagging), boosting, and stacking to get better performance.|[Source Code](https://github.com/Cheng-Lin-Li/MachineLearning/blob/master/Competition/McKinseyAnalyticsPrediction/NumberOfVehiclesPrediction.ipynb)|
 
 
 ## The task:
