@@ -28,17 +28,17 @@ Thanks,
 
 
 ## Reference
-* Machine Learning at Coursera: https://www.coursera.org/learn/machine-learning/
-* Machine Learning Course CS229 at Stanford: https://see.stanford.edu/Course/CS229
-* Machine Learning Foundations at NTU: https://www.youtube.com/watch?v=nQvpFSMPhr0&list=PLXVfgk9fNX2I7tB6oIINGBmW50rrmFTqf
-* Machine Learning Techniques at NTU: https://www.youtube.com/watch?v=A-GxGCCAIrg&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2
-* Hidden Markov model (HMM): https://en.wikipedia.org/wiki/Hidden_Markov_model
-* Viterbi Algorithm: http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf
-* LSTM: http://colah.github.io/posts/2015-08-Understanding-LSTMs/
-* PCA at wikipedia: https://en.wikipedia.org/wiki/Principal_component_analysis
+* [Machine Learning at Coursera](https://www.coursera.org/learn/machine-learning/)
+* [Machine Learning Course CS229 at Stanford](https://see.stanford.edu/Course/CS229)
+* [Machine Learning Foundations at NTU](https://www.youtube.com/watch?v=nQvpFSMPhr0&list=PLXVfgk9fNX2I7tB6oIINGBmW50rrmFTqf)
+* [Machine Learning Techniques at NTU](https://www.youtube.com/watch?v=A-GxGCCAIrg&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2)
+* [Hidden Markov model (HMM)](https://en.wikipedia.org/wiki/Hidden_Markov_model)
+* [Viterbi Algorithm](http://homepages.ulb.ac.be/~dgonze/TEACHING/viterbi.pdf)
+* [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+* [PCA at wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)
 
 ## Disclaimer
-Last updated: January 16, 2018
+Last updated: March 13, 2018
 
 The information contained on https://github.com/Cheng-Lin-Li/ website (the "Service") is for general information purposes only.
 Cheng-Lin-Li's github assumes no responsibility for errors or omissions in the contents on the Service and Programs.
