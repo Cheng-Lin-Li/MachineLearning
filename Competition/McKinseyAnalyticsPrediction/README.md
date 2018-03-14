@@ -13,6 +13,7 @@ The folders included demo programs for leverage scikit-learn, Keras libraries to
 Given 20 months Date time, ID of junctions, and number of Vehicles to predict number of vehicles in next 4 months.
 
 Training Data:
+
 |Data field|Description|
 |---|---|
 |DateTime|Date time info|
@@ -21,6 +22,7 @@ Training Data:
 |ID| Data unique ID|
 
 Test Data:
+
 |Data field|Description|
 |---|---|
 |DateTime|Date time info|
