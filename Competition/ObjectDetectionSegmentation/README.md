@@ -30,7 +30,7 @@ The goal is to improve OpenStreetMap by adding high quality baseball, soccer, te
 * [demo.ipynb](demo.ipynb) Is the easiest way to start. It shows an example of using a model pre-trained on MS COCO to segment objects in your own images.
 It includes code to run object detection and instance segmentation on arbitrary images.
 
-* [Video-Demo-Mask_RCNN.ipynb](Video-Demo-Mask_RCNN.ipynb.ipynb) Is the another easiest way to start the stream data. It shows an example of using a model pre-trained on MS COCO to segment objects from your own webcam.
+* [Video-Demo-Mask_RCNN.ipynb](Video-Demo-Mask_RCNN.ipynb) Is the another easiest way to start the stream data. It shows an example of using a model pre-trained on MS COCO to segment objects from your own webcam.
 It includes code to run object detection and instance segmentation on arbitrary images.
 This is an additional example which does not include in original repository. It refers from some other resources into this Jupyter notebook.
 
