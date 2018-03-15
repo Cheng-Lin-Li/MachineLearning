@@ -27,10 +27,10 @@ The goal is to improve OpenStreetMap by adding high quality baseball, soccer, te
     [![Mask RCNN on 4K Video](assets/4k_video.gif)](https://www.youtube.com/watch?v=OOT3UIXZztE)
 
 # Getting Started
-* [demo.ipynb](./demo.ipynb) Is the easiest way to start. It shows an example of using a model pre-trained on MS COCO to segment objects in your own images.
+* [demo.ipynb](demo.ipynb) Is the easiest way to start. It shows an example of using a model pre-trained on MS COCO to segment objects in your own images.
 It includes code to run object detection and instance segmentation on arbitrary images.
 
-* [Video-Demo-Mask_RCNN.ipynb](./Video-Demo-Mask_RCNN.ipynb.ipynb) Is the another easiest way to start the stream data. It shows an example of using a model pre-trained on MS COCO to segment objects from your own webcam.
+* [Video-Demo-Mask_RCNN.ipynb](Video-Demo-Mask_RCNN.ipynb.ipynb) Is the another easiest way to start the stream data. It shows an example of using a model pre-trained on MS COCO to segment objects from your own webcam.
 It includes code to run object detection and instance segmentation on arbitrary images.
 This is an additional example which does not include in original repository. It refers from some other resources into this Jupyter notebook.
 
@@ -39,12 +39,12 @@ This is an additional example which does not include in original repository. It 
 * ([model.py](model.py), [utils.py](utils.py), [config.py](config.py)): These files contain the main Mask RCNN implementation. 
 
 
-* [inspect_data.ipynb](./inspect_data.ipynb). This notebook visualizes the different pre-processing steps
+* [inspect_data.ipynb](inspect_data.ipynb). This notebook visualizes the different pre-processing steps
 to prepare the training data.
 
-* [inspect_model.ipynb](./inspect_model.ipynb) This notebook goes in depth into the steps performed to detect and segment objects. It provides visualizations of every step of the pipeline.
+* [inspect_model.ipynb](inspect_model.ipynb) This notebook goes in depth into the steps performed to detect and segment objects. It provides visualizations of every step of the pipeline.
 
-* [inspect_weights.ipynb](./inspect_weights.ipynb)
+* [inspect_weights.ipynb](inspect_weights.ipynb)
 This notebooks inspects the weights of a trained model and looks for anomalies and odd patterns.
 
 
