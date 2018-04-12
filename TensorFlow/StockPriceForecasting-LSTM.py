@@ -95,7 +95,7 @@ Warning:
 # 
 # #### 6. Number of Attributes
 # 
-# There are 16 attributes.  
+# There are 15 attributes.  
 # 
 # #### 7. For each Attribute
 # 
@@ -115,7 +115,7 @@ Warning:
 #     n. ISM: ISM Manufacturing Index is based on surveys of more than 300 manufacturing firms by the Institute of Supply Management. The ISM Manufacturing Index monitors employment, production, inventories, new orders and supplier deliveries. A composite diffusion index monitors conditions in national manufacturing and is based on the data from these surveys. 
 #     o. PCE: Personal Consumption Expenditure Price Index. It release every month.  
 # 
-# ###### Below data is for verification label.
+# ###### Below data is for performance verification labels.
 # 
 #     p. next_weeks_open: the opening price of the stock in the following week
 #     q. next_weeks_close: the closing price of the stock in the following week
