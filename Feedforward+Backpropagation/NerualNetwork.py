@@ -54,6 +54,8 @@ class NeuralNetwork:
 
     @staticmethod
     def binary_cross_entropy(y_true, y_pred):
+
+        # Clip predictions to prevent log(0) or log(1)
         eps = 1e-12
         y_pred = np.clip(y_pred, eps, 1.0 - eps)
 

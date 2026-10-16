@@ -3,7 +3,7 @@
 For an interview, the strongest implementation is a fully connected neural network from scratch using NumPy. 
 This example code demonstrates the understanding of the forward pass, loss calculation, backpropagation, gradient descent, and the chain rule.
 
-We'll implement a network with:
+This example code implements a network with:
 
 - Feedforward: Computes predictions layer by layer.
 - Loss: Binary cross-entropy for binary classification.
@@ -112,6 +112,7 @@ class NeuralNetwork:
 
     @staticmethod
     def binary_cross_entropy(y_true, y_pred):
+        # Clip predictions to prevent log(0) or log(1)
         eps = 1e-12
         y_pred = np.clip(y_pred, eps, 1.0 - eps)
 
